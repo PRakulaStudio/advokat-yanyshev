@@ -245,6 +245,101 @@ main {
   border-radius: 10px;
 }
 
+.fon-services {
+  background: url("/assets/icons/libra.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: right;
+}
+
+.services__title {
+  text-align: center;
+}
+.services__list {
+  display: flex;
+  margin: 0 200px;
+  position: relative;
+}
+.services__list > div {
+  display: flex;
+  flex-direction: column;
+  width: calc(100% / 3);
+  margin: 1rem;
+  background: #fff;
+  box-shadow: 5px 5px 20px rgba(100, 100, 100, 0.3);
+  padding: 0 10px 0 34px;
+  position: relative;
+}
+.services__list > div:hover {
+  background: #9d221f;
+  color: #fff;
+  cursor: pointer;
+}
+.services__list > div:hover .services__list--link {
+  color: #fff;
+  text-decoration: underline;
+}
+.services__list > div:hover .services__list--link:after {
+  background-image: url("/assets/icons/arrow(white).svg");
+}
+.services__list > div:hover:before {
+  background: #fff;
+}
+.services__list > div:before {
+  left: 20px;
+  content: "";
+  position: absolute;
+  display: block;
+  width: 3px;
+  height: 90%;
+  background: #9d221f;
+}
+.services__list--link {
+  display: block;
+  bottom: 0;
+  right: 0;
+  padding: 5px 10px;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  text-align: right;
+}
+.services__list--link:after {
+  content: "";
+  background: url("/assets/icons/arrow.svg") no-repeat;
+  background-size: contain;
+  width: 10px;
+  height: 10px;
+  display: inline-block;
+  padding-left: 4px;
+}
+.services__list--title {
+  margin-bottom: 0;
+}
+.services__list--text {
+  flex-grow: 1;
+  max-height: 14rem;
+  overflow: hidden;
+}
+.services__list--text p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.services__btn--all-services {
+  text-align: center;
+}
+.services__btn--all-services a {
+  display: inline-block;
+  border: 2px solid #9d221f;
+  padding: 5px 15px;
+  border-radius: 5px;
+  margin-top: 15px;
+}
+.services__btn--all-services a:hover {
+  background-color: #9d221f;
+  color: #fff;
+}
+
 @media screen and (min-width: 1400px) {
   .content {
     max-width: 1400px;
