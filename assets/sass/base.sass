@@ -1,0 +1,110 @@
+@import "utils/mixins"
+@import "utils/vars"
+@import "utils/fonts"
+
+html
+  box-sizing: border-box
+  -ms-overflow-style: scrollbar
+  height: 100%
+
+*, *:before, *:after
+  box-sizing: inherit
+
+body
+  min-width: 320px
+  position: relative
+  line-height: 1.75
+  overflow-x: hidden
+  opacity: 1
+  color: $color-text
+  background-color: $color-background
+  margin: 0
+  padding: 0
+  height: 100%
+  display: flex
+  flex-direction: column
+  font-family: 'AdvokatRobota', Arial, sans-serif
+  main
+    flex-grow: 1
+
+a
+  text-decoration: none
+  color: $color-text
+
+header, footer, .fon
+  +full-width
+
+.content
+  +content-width-normal
+
+header
+  background: $color-background-header
+
+  .header
+    display: flex
+    justify-content: space-between
+    height: 100px
+    //outline: 1px solid
+
+    &__logo
+
+      &--img
+
+    &__content
+
+      &--right
+        display: flex
+        flex-direction: column
+        justify-content: flex-end
+
+    &__contacts
+      text-align: right
+
+      &--email
+        padding: 10px
+        position: relative
+        margin-right: 20px
+        font-weight: 200
+
+        &:before
+          @extend %header__icons
+          background-image: url("/assets/icons/message.svg")
+
+      &--phone
+        padding: 10px
+        position: relative
+        font-weight: 200
+
+        &:before
+          @extend %header__icons
+          background-image: url("/assets/icons/phone.svg")
+
+    &__menu
+      list-style: none
+      display: flex
+      margin-bottom: 0
+
+      li
+        margin: 0 10px
+
+        &.active
+          a
+            color: $color-accent
+            position: relative
+
+            &:after
+              content: ''
+              display: block
+              width: 100%
+              height: 3px
+              background-color: $color-accent
+              position: absolute
+              bottom: 0
+
+        a
+          display: block
+          padding: 5px 0
+
+@media screen and (min-width: 1400px)
+  .content
+    +content-width-lg
