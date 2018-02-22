@@ -13,7 +13,7 @@ html
 body
   min-width: 320px
   position: relative
-  line-height: 1.75
+  line-height: 1.5
   overflow-x: hidden
   opacity: 1
   color: $color-text
@@ -39,71 +39,180 @@ header, footer, .fon
 
 header
   background: $color-background-header
+  position: fixed
+  z-index: 10
 
-  .header
-    display: flex
-    justify-content: space-between
-    height: 100px
-    //outline: 1px solid
+.header
+  display: flex
+  justify-content: space-between
+  height: 100px
 
-    &__logo
+  &__logo
 
-      &--img
+    &--img
 
-    &__content
+  &__content
 
-      &--right
-        display: flex
-        flex-direction: column
-        justify-content: flex-end
-
-    &__contacts
-      text-align: right
-
-      &--email
-        padding: 10px
-        position: relative
-        margin-right: 20px
-        font-weight: 200
-
-        &:before
-          @extend %header__icons
-          background-image: url("/assets/icons/message.svg")
-
-      &--phone
-        padding: 10px
-        position: relative
-        font-weight: 200
-
-        &:before
-          @extend %header__icons
-          background-image: url("/assets/icons/phone.svg")
-
-    &__menu
-      list-style: none
+    &--right
       display: flex
-      margin-bottom: 0
+      flex-direction: column
+      justify-content: flex-end
 
-      li
-        margin: 0 10px
+  &__contacts
+    text-align: right
 
-        &.active
-          a
-            color: $color-accent
-            position: relative
+    &--email
+      padding: 10px
+      position: relative
+      margin-right: 20px
+      font-weight: 200
 
-            &:after
-              content: ''
-              display: block
-              width: 100%
-              height: 3px
-              background-color: $color-accent
-              position: absolute
-              bottom: 0
+      &:before
+        @extend %icons
+        background-image: url("/assets/icons/message.svg")
 
+    &--phone
+      padding: 10px
+      position: relative
+      font-weight: 200
+
+      &:before
+        @extend %icons
+        background-image: url("/assets/icons/phone.svg")
+
+  &__menu
+    list-style: none
+    display: flex
+    margin-bottom: 0
+
+    li
+      margin: 0 10px
+
+      &.active, &:hover
         a
-          display: block
-          padding: 5px 0
+          color: $color-accent
+          position: relative
+
+          &:after
+            content: ''
+            display: block
+            width: 100%
+            height: 3px
+            background-color: $color-accent
+            position: absolute
+            bottom: 0
+
+      a
+        display: block
+        padding: 10px 0
+
+main
+  position: relative
+
+.fon-first
+  background: url("/assets/images/fon-site.jpg") no-repeat center
+  background-size: cover
+  position: relative
+
+.first
+  height: 100vh
+  padding: 100px 0 0 0
+  position: relative
+  display: flex
+
+  &__photo
+    position: absolute
+    bottom: 0
+    right: 0
+    overflow: hidden
+
+    img
+      margin-bottom: -10px
+      object-fit: contain
+
+    &--description
+      position: absolute
+      bottom: 50px
+      color: #fff
+      left: 50px
+
+      .photo__title
+        font-weight: 800
+        font-style: italic
+        font-size: 1.25rem
+
+      .photo__subtitle
+        margin-top: -10px
+
+  &__description
+    margin: auto 0
+
+    &--title
+      line-height: 1
+      font-size: 2.75rem
+      margin: 20px 0
+
+    &--subtitle
+      font-size: 2.2rem
+      margin: 0
+
+    &--consultation
+      font-size: 1.375rem
+
+    &--phone
+      font-size: 2.375rem
+      position: relative
+      margin-left: 40px
+
+      &:before
+        @extend %icons
+        margin-left: -30px
+        background-image: url("/assets/icons/phone.svg")
+        height: 2.375rem
+        top: calc(50% - (2.375rem) / 2)
+
+    &--tituls
+      padding: 5px 0
+      position: relative
+      font-weight: 600
+
+      &:before
+        content: ''
+        position: absolute
+        top: 0
+        left: 0
+        width: calc(100% - 100px)
+        height: 100%
+        background: transparentize($color-blockquotes, 0.4)
+
+      &:after
+        position: absolute
+        top: 0
+        right: -14px
+        content: ''
+        width: 0
+        height: 0
+        border-top: 0 solid transparentize($color-blockquotes, 0.4)
+        border-left: 114px solid transparentize($color-blockquotes, 0.4)
+        border-bottom: 114px solid transparent
+
+      ul
+        padding-left: 30px
+        list-style: none
+
+        li
+          position: relative
+
+          &:before
+            background-color: $color-accent
+            content: ''
+            width: 4px
+            height: 4px
+            display: block
+            top: calc(50% - 2px)
+            position: absolute
+            left: -10px
+            border-radius: 10px
 
 @media screen and (min-width: 1400px)
   .content

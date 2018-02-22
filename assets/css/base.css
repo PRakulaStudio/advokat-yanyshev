@@ -1,4 +1,4 @@
-header .header__contacts--email:before, header .header__contacts--phone:before {
+.header__contacts--email:before, .header__contacts--phone:before, .first__description--phone:before {
   content: "";
   background-size: contain;
   background-repeat: no-repeat;
@@ -43,7 +43,7 @@ html {
 body {
   min-width: 320px;
   position: relative;
-  line-height: 1.75;
+  line-height: 1.5;
   overflow-x: hidden;
   opacity: 1;
   color: #202020;
@@ -75,50 +75,53 @@ header, footer, .fon {
 
 header {
   background: #fff;
+  position: fixed;
+  z-index: 10;
 }
-header .header {
+
+.header {
   display: flex;
   justify-content: space-between;
   height: 100px;
 }
-header .header__content--right {
+.header__content--right {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
 }
-header .header__contacts {
+.header__contacts {
   text-align: right;
 }
-header .header__contacts--email {
+.header__contacts--email {
   padding: 10px;
   position: relative;
   margin-right: 20px;
   font-weight: 200;
 }
-header .header__contacts--email:before {
+.header__contacts--email:before {
   background-image: url("/assets/icons/message.svg");
 }
-header .header__contacts--phone {
+.header__contacts--phone {
   padding: 10px;
   position: relative;
   font-weight: 200;
 }
-header .header__contacts--phone:before {
+.header__contacts--phone:before {
   background-image: url("/assets/icons/phone.svg");
 }
-header .header__menu {
+.header__menu {
   list-style: none;
   display: flex;
   margin-bottom: 0;
 }
-header .header__menu li {
+.header__menu li {
   margin: 0 10px;
 }
-header .header__menu li.active a {
+.header__menu li.active a, .header__menu li:hover a {
   color: #9d221f;
   position: relative;
 }
-header .header__menu li.active a:after {
+.header__menu li.active a:after, .header__menu li:hover a:after {
   content: "";
   display: block;
   width: 100%;
@@ -127,9 +130,119 @@ header .header__menu li.active a:after {
   position: absolute;
   bottom: 0;
 }
-header .header__menu li a {
+.header__menu li a {
   display: block;
+  padding: 10px 0;
+}
+
+main {
+  position: relative;
+}
+
+.fon-first {
+  background: url("/assets/images/fon-site.jpg") no-repeat center;
+  background-size: cover;
+  position: relative;
+}
+
+.first {
+  height: 100vh;
+  padding: 100px 0 0 0;
+  position: relative;
+  display: flex;
+}
+.first__photo {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  overflow: hidden;
+}
+.first__photo img {
+  margin-bottom: -10px;
+  object-fit: contain;
+}
+.first__photo--description {
+  position: absolute;
+  bottom: 50px;
+  color: #fff;
+  left: 50px;
+}
+.first__photo--description .photo__title {
+  font-weight: 800;
+  font-style: italic;
+  font-size: 1.25rem;
+}
+.first__photo--description .photo__subtitle {
+  margin-top: -10px;
+}
+.first__description {
+  margin: auto 0;
+}
+.first__description--title {
+  line-height: 1;
+  font-size: 2.75rem;
+  margin: 20px 0;
+}
+.first__description--subtitle {
+  font-size: 2.2rem;
+  margin: 0;
+}
+.first__description--consultation {
+  font-size: 1.375rem;
+}
+.first__description--phone {
+  font-size: 2.375rem;
+  position: relative;
+  margin-left: 40px;
+}
+.first__description--phone:before {
+  margin-left: -30px;
+  background-image: url("/assets/icons/phone.svg");
+  height: 2.375rem;
+  top: calc(50% - (2.375rem) / 2);
+}
+.first__description--tituls {
   padding: 5px 0;
+  position: relative;
+  font-weight: 600;
+}
+.first__description--tituls:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(100% - 100px);
+  height: 100%;
+  background: rgba(242, 242, 242, 0.6);
+}
+.first__description--tituls:after {
+  position: absolute;
+  top: 0;
+  right: -14px;
+  content: "";
+  width: 0;
+  height: 0;
+  border-top: 0 solid rgba(242, 242, 242, 0.6);
+  border-left: 114px solid rgba(242, 242, 242, 0.6);
+  border-bottom: 114px solid transparent;
+}
+.first__description--tituls ul {
+  padding-left: 30px;
+  list-style: none;
+}
+.first__description--tituls ul li {
+  position: relative;
+}
+.first__description--tituls ul li:before {
+  background-color: #9d221f;
+  content: "";
+  width: 4px;
+  height: 4px;
+  display: block;
+  top: calc(50% - 2px);
+  position: absolute;
+  left: -10px;
+  border-radius: 10px;
 }
 
 @media screen and (min-width: 1400px) {
