@@ -12,6 +12,7 @@ window.addEventListener("load", function () {
         } catch (f) {
         }
     }
+
     document.querySelectorAll("[data-include]").forEach(i => {
         a(i, i.attributes.getNamedItem("data-include").value + ".html");
         i.attributes.removeNamedItem("data-include");

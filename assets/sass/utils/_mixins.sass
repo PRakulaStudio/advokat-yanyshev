@@ -1,4 +1,45 @@
-@import "vars"
+@mixin createGrid($count)
+  .container, .container-fluid
+    width: 100%
+    padding-right: 15px
+    padding-left: 15px
+    margin-right: auto
+    margin-left: auto
+
+  .row
+    display: -webkit-box
+    display: -ms-flexbox
+    display: flex
+    -ms-flex-wrap: wrap
+    flex-wrap: wrap
+    margin-right: -15px
+    margin-left: -15px
+
+  @for $i from 1 through $count
+    .col-#{$i}
+      @extend %base-col-box-flex
+      @extend %base-col
+      $width: percentage($i/$count)
+      -ms-flex: 0 0 $width
+      flex: 0 0 $width
+      max-width: $width
+
+  .col
+    @extend %base-col
+    -ms-flex-preferred-size: 0
+    flex-basis: 0
+    -webkit-box-flex: 1
+    -ms-flex-positive: 1
+    flex-grow: 1
+    max-width: 100%
+
+  .col-auto
+    @extend %base-col-box-flex
+    @extend %base-col
+    width: auto
+    -ms-flex: 0 0 auto
+    flex: 0 0 auto
+    max-width: none
 
 @mixin transition($prop)
   transition: $prop .25s ease
@@ -23,3 +64,13 @@
   position: absolute
   left: -1rem
   top: calc(50% - .5rem)
+
+%base-col
+  position: relative
+  width: 100%
+  min-height: 1px
+  padding-right: 15px
+  padding-left: 15px
+
+%base-col-box-flex
+  -webkit-box-flex: 0
