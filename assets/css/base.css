@@ -145,6 +145,8 @@ main ul {
 }
 main ul li {
   position: relative;
+  padding-left: 1rem;
+  text-indent: 0;
 }
 main ul li:before {
   background-color: #9d221f;
@@ -197,6 +199,54 @@ header .rightBlock {
   flex-direction: column;
   justify-content: flex-end;
 }
+header .breadCrumbs {
+  position: absolute;
+  background: #f9f9f9;
+  width: 100%;
+}
+header .breadCrumbs ul {
+  list-style: none;
+  display: flex;
+  padding-left: 20px;
+  margin: 0;
+}
+header .breadCrumbs ul li {
+  position: relative;
+}
+header .breadCrumbs ul li:first-child a {
+  position: relative;
+}
+header .breadCrumbs ul li:first-child a:before {
+  content: "";
+  position: absolute;
+  background: url("/assets/icons/breadcrumbs.svg") no-repeat;
+  background-size: contain;
+  height: 1rem;
+  width: 1rem;
+  left: -0.4rem;
+  top: calc(50% - 0.6rem);
+}
+header .breadCrumbs ul li:last-child:after {
+  content: none;
+}
+header .breadCrumbs ul li a {
+  padding: 10px 15px;
+  display: block;
+}
+header .breadCrumbs ul li a:hover {
+  color: #9d221f;
+  text-decoration: none;
+}
+header .breadCrumbs ul li:after {
+  content: "";
+  position: absolute;
+  background: url("/assets/icons/arrow.svg") no-repeat;
+  background-size: contain;
+  height: 1rem;
+  width: 1rem;
+  right: -0.5rem;
+  top: calc(50% - 0.5rem);
+}
 
 .menu__list {
   list-style: none;
@@ -205,12 +255,13 @@ header .rightBlock {
 }
 .menu__list li {
   margin: 0 10px;
+  position: relative;
 }
-.menu__list li.active a, .menu__list li:hover a {
+.menu__list > li.active > a, .menu__list > li:hover > a {
   color: #9d221f;
   position: relative;
 }
-.menu__list li.active a:after, .menu__list li:hover a:after {
+.menu__list > li.active > a:after, .menu__list > li:hover > a:after {
   content: "";
   display: block;
   width: 100%;
@@ -219,12 +270,55 @@ header .rightBlock {
   position: absolute;
   bottom: 0;
 }
-.menu__list li a {
+.menu__list > li a {
   display: block;
   padding: 10px 0;
 }
-.menu__list li a:hover {
+.menu__list > li a:hover {
   text-decoration: none;
+}
+.menu__list > li:hover ul {
+  display: block;
+}
+.menu__list > li ul {
+  display: none;
+  position: absolute;
+  list-style: none;
+  padding-left: 0;
+  background: #fff;
+}
+.menu__list > li ul:before {
+  content: "";
+  display: block;
+  height: 100%;
+  width: 3px;
+  background-color: #9d221f;
+  position: absolute;
+  bottom: 0;
+}
+.menu__list > li ul li {
+  width: 300px;
+  margin: 0 0 0 3px;
+  padding-right: 30px;
+  position: relative;
+}
+.menu__list > li ul li a {
+  padding: 10px;
+}
+.menu__list > li ul li:hover > a {
+  color: #9d221f;
+  background: #F2F2F2;
+}
+.menu__list > li ul li:hover > a:after {
+  content: "";
+  width: 30px;
+  height: 100%;
+  background: #9d221f url("/assets/icons/arrow(white).svg") no-repeat center;
+  background-size: 1.5rem 1.5rem;
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
 .contacts {
@@ -352,10 +446,10 @@ header .rightBlock {
   margin-bottom: 14px;
 }
 .services__item {
+  box-shadow: 5px 5px 20px rgba(100, 100, 100, 0.3);
   display: flex;
   flex-direction: column;
   background: #fff;
-  box-shadow: 5px 5px 20px rgba(100, 100, 100, 0.3);
   padding: 0 10px 0 34px;
   position: relative;
   height: 100%;
@@ -431,7 +525,7 @@ header .rightBlock {
   text-decoration: none;
 }
 
-.warning {
+.warning .container {
   background: linear-gradient(0, #ffffff, #f4f4f4);
   padding: 10px 0;
   display: flex;
@@ -442,6 +536,14 @@ header .rightBlock {
 }
 .warning a:hover {
   text-decoration: underline;
+}
+.warning__lists {
+  max-width: 1200px;
+  justify-content: center;
+}
+.warning__lists .col:first-child {
+  display: flex;
+  justify-content: flex-end;
 }
 
 .about__tituls, .about__video {
@@ -469,12 +571,7 @@ header .rightBlock {
 }
 
 .blockquotes {
-  max-width: 1200px;
-  margin: 30px auto;
-  box-shadow: 5px 5px 20px rgba(100, 100, 100, 0.3);
-  background: #F2F2F2;
   padding: 15px 30px 0 30px;
-  position: relative;
 }
 .blockquotes:before {
   content: '"';
@@ -530,6 +627,52 @@ footer .prakula__link {
 footer .prakula__link img {
   height: 50px;
   margin-bottom: -5px;
+}
+
+.practice, .blockquotes {
+  box-shadow: 5px 5px 20px rgba(100, 100, 100, 0.3);
+  max-width: 1200px;
+  margin: 30px auto;
+  background: #F2F2F2;
+  position: relative;
+  padding: 15px;
+  font-weight: bold;
+}
+
+.situations .container {
+  max-width: 1200px !important;
+}
+.situations ul {
+  padding-left: 0;
+}
+.situations li {
+  box-shadow: 5px 5px 20px rgba(100, 100, 100, 0.3);
+  padding: 40px 20px 20px;
+  margin: 0 5px;
+  background-color: #F2F2F2;
+}
+.situations li:last-child {
+  margin-right: 0;
+}
+.situations li:first-child {
+  margin-left: 0;
+}
+.situations li:before {
+  border: 20px solid #9d221f;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: none;
+  border-radius: 0;
+}
+.situations__index {
+  position: absolute;
+  top: 0;
+  left: 5px;
+  color: #fff;
 }
 
 @media screen and (min-width: 1400px) {

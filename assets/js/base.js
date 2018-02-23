@@ -13,9 +13,9 @@ window.addEventListener("load", function () {
         }
     }
 
-    document.querySelectorAll("[data-include]").forEach(i => {
-        a(i, i.attributes.getNamedItem("data-include").value + ".html");
-        i.attributes.removeNamedItem("data-include");
+    document.querySelectorAll("[data-template]").forEach(i => {
+        a(i, "parts/" + i.attributes.getNamedItem("data-template").value + ".html");
+        i.attributes.removeNamedItem("data-template");
     });
 });
 

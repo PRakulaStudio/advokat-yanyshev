@@ -7,48 +7,7 @@
     <title>Адвокат Янышев</title>
 </head>
 <body>
-<header>
-    <div class="container">
-        <div class="logo">
-            <a href="/" class="logo__link">
-                <img class="logo__img" src="/assets/images/logo-site(1).png" alt="">
-            </a>
-        </div>
-        <div class="rightBlock">
-            <div class="contacts">
-                <a class="contacts__email" href="mailto:yanyshev.constantin@yandex.ru">yanyshev.constantin@yandex.ru</a>
-                <a class="contacts__phone" href="tel:+7 (912) 631-20-28">+7 (912) 631-20-28</a>
-            </div>
-            <ul class="menu__list">
-                <li class="active">
-                    <a href="">
-                        Главная
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        Об адвокате
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        Услуги
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        Полезная информация
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        Контакты
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</header>
+<header data-template="header"></header>
 <main>
     <section class="hello">
         <div class="container">
@@ -153,37 +112,7 @@
             </div>
         </div>
     </section>
-    <section>
-        <div class="warning container">
-            <h1 class="text-center"><span class="text-accent">Важно!</span> Ваши действия при задержании:</h1>
-            <div class="row">
-                <div class="col-3">
-                    <ul class="warning__list">
-                        <li>Не реагируйте на угрозы и уговоры сотрудников полиции</li>
-                        <li>Откажитесь от дачи показаний</li>
-                        <li>Не давайте объяснения и показания без своего защитника</li>
-                        <li>Пригласите своего адвоката, тел.: <a class="text-accent" href="tel:+7(912) 631-20-28">+7(912) 631-20-28</a></li>
-                    </ul>
-                </div>
-                <div class="col-3">
-                    <ul class="warning__list">
-                        <li>Знайте по памяти телефоны своих близких</li>
-                        <li>Вы имеете право на один телефонный звонок</li>
-                        <li>Не пользуйтесь помощью бесплатного, дежурного юриста</li>
-                        <li>Не подписывайте никаких бумаг</li>
-                    </ul>
-                </div>
-            </div>
-            <div>
-                <h2 class="text-center text-accent">Я могу Вам помочь!</h2>
-                <p class="text-center">Консультация адвоката по уголовным делам в Екатеринбурге <span class="text-accent">БЕСПЛАТНО</span>!</p>
-                <p class="text-center">
-                    <a class=" contacts__phone contacts__phone--large" href="tel:+7 (912) 631-20-28">+7 (912) 631-20-28</a>
-                </p>
-            </div>
-        </div>
-    </section>
-
+    <section class="warning" data-template="warning"></section>
 
     <section class="about">
         <h1 class="text-center">Об адвокате</h1>
@@ -282,47 +211,9 @@
         </div>
     </section>
 
-    <section class="blockquotes">
-        <div class="blockquotes__text">
-            <p>Я как адвокат-профессионал принимаю участие во всех следственных мероприятиях, грамотно защищаю права доверителя на этапе предварительного следствия, разрабатываю
-                линию
-                защиты и стратегию поведения.</p>
-        </div>
-        <div class="blockquotes__name"><p><strong>Адвокат Константин Янышев</strong></p></div>
-    </section>
+    <section class="blockquotes" data-template="blockquotes"></section>
 </main>
-<footer>
-    <div class="container info">
-        <div class="logo">
-            <a href="/" class="logo__link">
-                <img class="logo__img" src="/assets/images/logo-site(1).png" alt="">
-            </a>
-        </div>
-        <div class="phone">
-            <a class="contacts__phone contacts__phone--large" href="tel:+7 (912) 631-20-28">+7 (912) 631-20-28</a>
-        </div>
-        <div class="contacts">
-            <div>
-                г. Екатеринбург<br>
-                ул. Луначарского 81, офис 300<br>
-                <a class="text-accent" href="mailto:yanyshev.constantin@yandex.ru">yanyshev.constantin@yandex.ru</a>
-            </div>
-        </div>
-    </div>
-    <div class="container cities">
-        <h3>Города в которых я работаю:</h3>
-        <p>Екатеринбург, Уфа, Нижний тагил, Тюмень, Каменск-Уральский, Курган, Тобольск, Нижневартовск, Сургут, Нефтеюганск, Ханты-Мансийск, Новый Уренгой, Челябинск, Магнитогорск,
-            Златоуст, Копейск, Миасс, Свердловская область, ХМАО, ЯНАО, Тюменская область, Челябинская область, Возможен выезд в другие города РФ.</p>
-    </div>
-    <div class="container-fluid prakula">
-        <div class="container text-center ">
-            &copy; 2018
-            <a class="prakula__link" target="_blank" href="http://prakula.ru">
-                <img src="/assets/images/logo%20PRAkula.png" alt="">
-            </a>
-        </div>
-    </div>
-</footer>
+<footer data-template="footer"></footer>
 <script src="/assets/js/base.js"></script>
 
 </body>

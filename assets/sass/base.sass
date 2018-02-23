@@ -8,7 +8,7 @@ $max-width-little: 1200px
 
 *, *:before, *:after
   box-sizing: inherit
-  //outline: 1px solid red
+//outline: 1px solid red
 
 html, body
   box-sizing: border-box
@@ -37,6 +37,8 @@ main
 
     li
       position: relative
+      padding-left: 1rem
+      text-indent: 0
 
       &:before
         background-color: $color-accent
@@ -82,6 +84,57 @@ header
     flex-direction: column
     justify-content: flex-end
 
+  .breadCrumbs
+    position: absolute
+    background: $color-background
+    width: 100%
+
+    ul
+      list-style: none
+      display: flex
+      padding-left: 20px
+      margin: 0
+
+      li
+        position: relative
+
+        &:first-child
+          a
+            position: relative
+
+            &:before
+              content: ''
+              position: absolute
+              background: url("/assets/icons/breadcrumbs.svg") no-repeat
+              background-size: contain
+              height: 1rem
+              width: 1rem
+              left: -0.4rem
+              top: calc(50% - 0.6rem)
+
+        &:last-child
+
+          &:after
+            content: none
+
+        a
+          padding: 10px 15px
+          display: block
+
+          &:hover
+            color: $color-accent
+            text-decoration: none
+
+        &:after
+          content: ''
+          position: absolute
+          background: url("/assets/icons/arrow.svg") no-repeat
+          background-size: contain
+          height: 1rem
+          width: 1rem
+          right: -0.5rem
+          top: calc(50% - 0.5rem)
+
 .menu__list
   list-style: none
   display: flex
@@ -89,10 +142,11 @@ header
 
   li
     margin: 0 10px
+    position: relative
 
+  > li
     &.active, &:hover
-
-      a
+      > a
         color: $color-accent
         position: relative
 
@@ -111,6 +165,49 @@ header
 
       &:hover
         text-decoration: none
+
+    &:hover
+      ul
+        display: block
+    ul
+      display: none
+      position: absolute
+      list-style: none
+      padding-left: 0
+      background: #fff
+
+      &:before
+        content: ''
+        display: block
+        height: 100%
+        width: 3px
+        background-color: $color-accent
+        position: absolute
+        bottom: 0
+      li
+        width: 300px
+        margin: 0 0 0 3px
+        padding-right: 30px
+        position: relative
+
+        a
+          padding: 10px
+
+        &:hover
+          > a
+            color: $color-accent
+            background: $color-blockquotes
+
+            &:after
+              content: ''
+              width: 30px
+              height: 100%
+              background: $color-accent url("/assets/icons/arrow(white).svg") no-repeat center
+              background-size: 1.5rem 1.5rem
+              display: block
+              position: absolute
+              right: 0
+              top: 0
 
 .contacts
   text-align: right
@@ -241,10 +338,10 @@ header
       margin-bottom: 14px
 
   &__item
+    +box-shadow
     display: flex
     flex-direction: column
     background: #fff
-    box-shadow: 5px 5px 20px rgba(100, 100, 100, 0.3)
     padding: 0 10px 0 34px
     position: relative
     height: 100%
@@ -266,11 +363,13 @@ header
       .services__link
         color: #fff
         text-decoration: underline
+
         &:after
           background-image: url("/assets/icons/arrow(white).svg")
 
       &:before
         background: #fff
+
   &__link
     display: block
     bottom: 0
@@ -318,16 +417,26 @@ header
         text-decoration: none
 
 .warning
-  background: linear-gradient(0, $color-gradient-from, $color-gradient-to)
-  padding: 10px 0
-  display: flex
-  flex-direction: column
-  justify-content: center
-  margin-top: 30px
-  max-width: $max-width-little !important
+
+  .container
+    background: linear-gradient(0, $color-gradient-from, $color-gradient-to)
+    padding: 10px 0
+    display: flex
+    flex-direction: column
+    justify-content: center
+    margin-top: 30px
+    max-width: $max-width-little !important
 
   a:hover
     text-decoration: underline
+
+  &__lists
+    max-width: $max-width-little
+    justify-content: center
+
+    .col:first-child
+      display: flex
+      justify-content: flex-end
 
 .about
 
@@ -337,13 +446,15 @@ header
     margin: 20px 0
 
   &__video
+
     iframe
       border-radius: 10px
       overflow: hidden
 
 .largetext
+
   &__text
-    box-shadow: 5px 5px 20px rgba(100, 100, 100, 0.3)
+    +box-shadow
     background: #fff
     padding: 10px
     text-indent: 2rem
@@ -356,12 +467,9 @@ header
       background-color: $color-accent
 
 .blockquotes
-  max-width: $max-width-little
-  margin: 30px auto
-  box-shadow: 5px 5px 20px rgba(100, 100, 100, 0.3)
-  background: $color-blockquotes
+
+  @extend .practice
   padding: 15px 30px 0 30px
-  position: relative
 
   &:before
     content: '"'
@@ -391,7 +499,6 @@ header
 footer
   background-color: #fff
 
-
   .info
     display: flex
     justify-content: space-between
@@ -407,9 +514,8 @@ footer
     line-height: 50px
     background: #ddd
 
-    >.container
+    > .container
       position: relative
-
 
     &__link
       position: absolute
@@ -420,7 +526,53 @@ footer
         height: 50px
         margin-bottom: -5px
 
+.practice
+  +box-shadow
+  max-width: $max-width-little
+  margin: 30px auto
+  background: $color-blockquotes
+  position: relative
+  padding: 15px
+  font-weight: bold
+
+.situations
+
+  .container
+    max-width: $max-width-little !important
+
+  ul
+    padding-left: 0
+
+  li
+    +box-shadow
+    padding: 40px 20px 20px
+    margin: 0 5px
+    background-color: $color-blockquotes
+
+    &:last-child
+      margin-right: 0
+
+    &:first-child
+      margin-left: 0
+
+    &:before
+      border: 20px solid $color-accent
+      border-right-color: transparent
+      border-bottom-color: transparent
+      content: ''
+      position: absolute
+      top: 0
+      left: 0
+      background: none
+      border-radius: 0
+
+  &__index
+    position: absolute
+    top: 0
+    left: 5px
+    color: #fff
 
 @media screen and (min-width: 1400px)
+
   .container
     +content-width-lg
