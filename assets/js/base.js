@@ -17,7 +17,68 @@ window.addEventListener("load", function () {
         a(i, "parts/" + i.attributes.getNamedItem("data-template").value + ".html");
         i.attributes.removeNamedItem("data-template");
     });
+
+    disableMenuItems(document.querySelector(".menu__list"));
+    let btn = document.querySelector('.menu__btn');
+
+    btn.addEventListener("click", e => {
+        showMenu();
+    });
+
+    function showMenu() {
+        let header = document.querySelector("header");
+        let ul = header.querySelector(".menu__list").outerHTML;
+        let logo = header.querySelector(".logo").outerHTML;
+        let contacts = header.querySelector(".contacts").outerHTML;
+
+        let lightboxer = new Lightboxer();
+        lightboxer.setHtml("<div><div class='container'>" + logo + "<div class='menu__btn--close'><img src='/assets/icons/icons8-cancel.svg' alt=''></div></div></div><div>" + contacts + "</div><div>" + ul + "</div>");
+        lightboxer.div.querySelector('.menu__btn--close').addEventListener('click', evt => {
+            lightboxer.closeBox();
+        });
+        let items = disableMenuItems(lightboxer.div.querySelector(".menu__list"));
+        items.forEach(item => {
+            item.querySelector('a').classList.add("arrow-close", "arrow");
+            let ul = item.querySelector("ul");
+            if (ul != null) {
+                item.addEventListener('click', e => {
+                    if (!ul.classList.contains("d-none")) {
+                        let func = function () {
+                            ul.classList.add("d-none");
+                            ul.removeEventListener("transitionend", func, false);
+                        };
+                        ul.classList.add("o-none");
+                        ul.addEventListener("transitionend", func, false);
+                        item.querySelector('a').classList.add("arrow-close");
+                    }
+                    else {
+                        ul.classList.remove("d-none");
+                        setTimeout(function () {
+                            ul.classList.remove("o-none");
+                        }, 20);
+                        item.querySelector('a').classList.remove("arrow-close");
+
+                    }
+                });
+            }
+        });
+        lightboxer.show();
+    }
 });
+
+function disableMenuItems(menu_list) {
+    let items = [];
+    menu_list.querySelectorAll("li").forEach(value => {
+        if (value.querySelector("ul")) {
+            value.querySelector("a").addEventListener('click', evt => {
+                evt.preventDefault();
+            });
+            items.push(value);
+        }
+    });
+    return items;
+}
+
 
 // UTILS
 function log(s) { // Упрощенный лог
@@ -26,7 +87,7 @@ function log(s) { // Упрощенный лог
 
 function Lightboxer() {
     let div = document.createElement("div");
-    div.classList.add("lightbox-container", "d-none", "o-none");
+    div.classList.add("lightboxer-container", "d-none", "o-none");
     body.appendChild(div);
     this.div = div;
     this.closeBox = function () {
@@ -43,6 +104,9 @@ function Lightboxer() {
         div.innerHTML = html
     };
     this.show = function () {
+        div.addEventListener('click', ev => {
+            if (ev.target.classList.contains("lightboxer-container")) this.closeBox();
+        });
         body.classList.add("overflow-hidden");
         div.classList.remove("d-none");
         setTimeout(function () {
