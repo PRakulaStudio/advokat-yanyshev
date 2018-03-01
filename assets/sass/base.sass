@@ -13,10 +13,11 @@ html, body
   box-sizing: border-box
 //outline: 1px solid red
 
+
 body
   min-width: 320px
   position: relative
-  line-height: 1.75
+  line-height: 1.5
   overflow-x: hidden
   color: $color-text
   background-color: $color-background
@@ -25,6 +26,19 @@ body
   display: flex
   flex-direction: column
   font-family: 'AdvokatRobota', Arial, sans-serif
+
+h1
+  font-size: 2rem
+  line-height: 1.2
+
+h1, h2, h3, h4, h5, h6
+  -moz-hyphens: auto
+  -webkit-hyphens: auto
+  -ms-hyphens: auto
+
+h2 + h3
+  margin-top: 0
+  margin-bottom: 0.5rem
 
 main
   padding-top: 100px
@@ -37,7 +51,7 @@ main
 
     li
       position: relative
-      padding-left: 1rem
+      padding-left: 0
       text-indent: 0
 
       &:before
@@ -46,7 +60,7 @@ main
         width: 4px
         height: 4px
         display: block
-        top: .5rem
+        top: .7rem
         position: absolute
         left: -10px
         border-radius: 10px
@@ -116,6 +130,8 @@ header, footer, section
       background: #fff
       max-height: 300px
       overflow-y: scroll
+      z-index: 20
+
       li
         width: 300px
         padding: 0 30px 0 3px
@@ -177,6 +193,8 @@ header
   background: $color-background
   width: 100%
   overflow: hidden
+  height: 48px
+  z-index: 14
 
   ul
     list-style: none
@@ -187,10 +205,12 @@ header
 
     li
       position: relative
+      white-space: nowrap
+      &:last-child
+        padding: 10px 15px
 
       &:first-child
         a
-
           position: relative
 
           &:before
@@ -265,7 +285,7 @@ header
         background-image: url("/assets/icons/message.svg")
 
 .hello
-  height: calc(100vh - 100px)
+  height: calc(100vh - 99px)
   overflow: hidden
   background: url("/assets/images/fon-site.jpg") no-repeat center
   background-size: cover
@@ -278,7 +298,6 @@ header
   .col-4
     display: flex
     flex-direction: column
-    justify-content: center
 
   .photo
     display: flex
@@ -288,6 +307,8 @@ header
     bottom: 0
     right: 0
     overflow: hidden
+    width: 80%
+    height: 80%
 
     &__img
       margin-bottom: -10px
@@ -349,10 +370,12 @@ header
       width: 0
       height: 0
       border-top: 0 solid transparentize($color-blockquotes, 0.4)
-      border-left: 127px solid transparentize($color-blockquotes, 0.4)
-      border-bottom: 127px solid transparent
+      border-left: 114px solid transparentize($color-blockquotes, 0.4)
+      border-bottom: 114px solid transparent
 
 .services
+  background: url("/assets/icons/libra.svg") no-repeat right
+  background-size: contain
 
   &__list
     display: flex
@@ -470,7 +493,6 @@ header
   &__tituls, &__video
     display: flex
     justify-content: center
-    margin: 20px 0
 
   &__video
 
@@ -485,6 +507,11 @@ header
     background: #fff
     padding: 10px
     text-indent: 2rem
+    position: relative
+    h1, h2, h3, h4, h5, h6
+      margin-bottom: -0.2rem
+    p
+      margin: 0.5rem 0 0
 
     &:before
       content: ''
@@ -492,32 +519,35 @@ header
       height: 3px
       display: block
       background-color: $color-accent
+      position: absolute
+      left: 0
 
 .blockquotes
+  position: relative
+
+blockquote
 
   @extend .practice
-  padding: 15px 30px 0 30px
+  padding: 20px 35px 15px !important
 
-  &:before
+  &:before, &:after
     content: '"'
-    font-size: 50px
+    font-size: 4rem
     font-weight: bold
     position: absolute
-    top: -15px
+    width: 2rem
+    height: 2rem
+    line-height: 1
+    text-indent: 0
+
+  &:before
+    top: 5px
     left: 5px
 
-  &__text
-    font-weight: 800
-    font-style: italic
-
-    &:after
-      content: '"'
-      font-size: 50px
-      font-weight: bold
-      transform: rotate(180deg)
-      display: block
-      line-height: 0
-      margin-bottom: 30px
+  &:after
+    transform: rotate(180deg)
+    right: 5px
+    bottom: 5px
 
   &__name
     text-align: right
@@ -525,6 +555,7 @@ header
 
 footer
   background-color: #fff
+  margin-top: 30px
 
   .info
     display: flex
@@ -569,7 +600,7 @@ footer
     padding: 0
 
   ul
-    padding-left: 0
+    padding-left: 0 !important
 
   li
     +box-shadow
@@ -601,7 +632,45 @@ footer
     color: #fff
 
 .lightboxer-container
-  overflow-x: scroll
+  position: fixed
+  top: 0
+  left: 0
+  width: 100vw
+  height: 100vh
+  background: rgba(0, 0, 0, .8)
+  display: flex
+  transition: all 0.2s linear
+  z-index: 750
+  flex-direction: column
+  overflow: hidden
+
+  span
+    color: #ffffff
+    position: absolute
+    font-size: 2rem
+    padding: 0.5rem
+    text-align: center
+    background: lighten(#000, 10%)
+    top: calc(50vh - 2rem)
+    cursor: pointer
+
+    &:first-of-type
+      left: 0
+    &:last-of-type
+      right: 0
+
+  > img
+    object-fit: contain
+    max-width: 80vw
+    max-height: 80vh
+    margin: auto
+
+  .menu__wrapper
+    overflow-y: scroll
+    height: 100%
+    padding: 0 10px
+    @media screen and (max-width: 400px)
+      padding: 0
 
   .container
     display: flex
@@ -643,6 +712,7 @@ footer
       display: block
       position: relative
       transition: all 0.2s ease-out
+      max-height: none
 
     li ul li
       width: auto
@@ -650,13 +720,10 @@ footer
         a:after
           content: none !important
 
-  .logo
-    img
-      height: 50px
   .contacts
     display: block !important
     text-align: center
-    margin: 70px 0 0
+    margin: 100px 0 0
   .menu__btn--close
     width: 30px
     height: 30px
@@ -665,5 +732,24 @@ footer
     img
       height: inherit
       widows: inherit
+
+.about_me
+  margin-top: 80px
+  .awards
+    .row
+      padding: 15px 0
+      .col
+        cursor: pointer
+        margin-bottom: 1rem
+        &:last-child
+          margin-bottom: 0
+      img
+        max-height: 200px
+        object-fit: contain
+
+.contactsPage
+  .largetext__text
+    text-indent: 0
+
 @import "plugins/lightboxer"
 @import "meida"

@@ -13,58 +13,128 @@ window.addEventListener("load", function () {
         }
     }
 
-    document.querySelectorAll("[data-template]").forEach(i => {
-        a(i, "parts/" + i.attributes.getNamedItem("data-template").value + ".html");
-        i.attributes.removeNamedItem("data-template");
-    });
+
+    if (location.hostname !== "new.advokat-yanyshev.ru" && location.hostname !== "advokat-yanyshev.ru")
+        document.querySelectorAll("[data-template]").forEach(i => {
+            a(i, "parts/" + i.attributes.getNamedItem("data-template").value + ".html");
+            i.attributes.removeNamedItem("data-template");
+        });
+
+    let path = location.pathname.split('/')[1];
+    if (path === "") path = "/";
+    else path = "/" + path + "/";
+    let menuItem = document.querySelector("header nav a[href='" + path + "']");
+    if (menuItem != null)
+        menuItem.parentNode.classList.add('active');
 
     disableMenuItems(document.querySelector(".menu__list"));
+
+    let serviceSituations = document.querySelector(".service-situations ul");
+    if (serviceSituations != null) {
+        serviceSituations.classList.add("row");
+        serviceSituations.querySelectorAll("li").forEach((li, index) => {
+            li.classList.add("col");
+            li.innerHTML = '<span class="situations__index">' + (index + 1) + '</span>' + li.innerHTML;
+        });
+    }
     let btn = document.querySelector('.menu__btn');
 
     btn.addEventListener("click", e => {
         showMenu();
     });
 
-    function showMenu() {
-        let header = document.querySelector("header");
-        let ul = header.querySelector(".menu__list").outerHTML;
-        let logo = header.querySelector(".logo").outerHTML;
-        let contacts = header.querySelector(".contacts").outerHTML;
+    let images = document.querySelectorAll(".awards .row img");
+    images.forEach((img, index) => {
+        if (img.attributes.hasOwnProperty('width'))
+            img.attributes.removeNamedItem('width');
+        if (img.attributes.hasOwnProperty('height'))
+            img.attributes.removeNamedItem('height');
+        img.classList.add('col');
+        img.addEventListener('click', function () {
+            let toIndex = index;
 
-        let lightboxer = new Lightboxer();
-        lightboxer.setHtml("<div><div class='container'>" + logo + "<div class='menu__btn--close'><img src='/assets/icons/icons8-cancel.svg' alt=''></div></div></div><div>" + contacts + "</div><div>" + ul + "</div>");
-        lightboxer.div.querySelector('.menu__btn--close').addEventListener('click', evt => {
-            lightboxer.closeBox();
-        });
-        let items = disableMenuItems(lightboxer.div.querySelector(".menu__list"));
-        items.forEach(item => {
-            item.querySelector('a').classList.add("arrow-close", "arrow");
-            let ul = item.querySelector("ul");
-            if (ul != null) {
-                item.addEventListener('click', e => {
-                    if (!ul.classList.contains("d-none")) {
-                        let func = function () {
-                            ul.classList.add("d-none");
-                            ul.removeEventListener("transitionend", func, false);
-                        };
-                        ul.classList.add("o-none");
-                        ul.addEventListener("transitionend", func, false);
-                        item.querySelector('a').classList.add("arrow-close");
-                    }
-                    else {
-                        ul.classList.remove("d-none");
-                        setTimeout(function () {
-                            ul.classList.remove("o-none");
-                        }, 20);
-                        item.querySelector('a').classList.remove("arrow-close");
+            let listener = (event) => {
+                if (event.keyCode === 37) toPrev();
+                else if (event.keyCode === 39) toNext();
+            };
+            let lightboxer = new Lightboxer();
+            setImgHtml(img);
+            document.addEventListener('keydown', listener, false);
+            lightboxer.show();
 
-                    }
+            function setImgHtml(img) {
+                lightboxer.setHtml('<span>&#8592;</span><span>&#8594;</span>' + img.outerHTML);
+                let spans = lightboxer.div.querySelectorAll('span');
+                spans[0].addEventListener('click', evt => {
+                    evt.preventDefault();
+                    toPrev();
+                });
+                spans[1].addEventListener('click', evt => {
+                    evt.preventDefault();
+                    toNext();
+                });
+                lightboxer.div.querySelectorAll('img').forEach(img => {
+                    img.addEventListener('click', function () {
+                        lightboxer.closeBox();
+                        document.removeEventListener('keydown', listener, false);
+                    });
                 });
             }
+
+            function toPrev() {
+                toIndex = toIndex - 1;
+                if (toIndex < 0) toIndex = images.length - 1;
+                setImgHtml(images[toIndex]);
+            }
+
+            function toNext() {
+                toIndex = toIndex + 1;
+                if (toIndex === images.length) toIndex = 0;
+                setImgHtml(images[toIndex]);
+            }
         });
-        lightboxer.show();
-    }
+    });
 });
+
+function showMenu() {
+    let header = document.querySelector("header");
+    let ul = header.querySelector(".menu__list").outerHTML;
+    let logo = header.querySelector(".logo").outerHTML;
+    let contacts = header.querySelector(".contacts").outerHTML;
+
+    let lightboxer = new Lightboxer();
+    lightboxer.setHtml("<div class='logo__wrapper'><div class='container'>" + logo + "<div class='menu__btn--close'><img src='/assets/icons/icons8-cancel.svg' alt=''></div></div></div><div>" + contacts + "</div><div class='menu__wrapper'>" + ul + "</div>");
+    lightboxer.div.querySelector('.menu__btn--close').addEventListener('click', evt => {
+        lightboxer.closeBox();
+    });
+    let items = disableMenuItems(lightboxer.div.querySelector(".menu__list"));
+    items.forEach(item => {
+        item.querySelector('a').classList.add("arrow-close", "arrow");
+        let ul = item.querySelector("ul");
+        if (ul != null) {
+            item.addEventListener('click', e => {
+                if (!ul.classList.contains("d-none")) {
+                    let func = function () {
+                        ul.classList.add("d-none");
+                        ul.removeEventListener("transitionend", func, false);
+                    };
+                    ul.classList.add("o-none");
+                    ul.addEventListener("transitionend", func, false);
+                    item.querySelector('a').classList.add("arrow-close");
+                }
+                else {
+                    ul.classList.remove("d-none");
+                    setTimeout(function () {
+                        ul.classList.remove("o-none");
+                    }, 20);
+                    item.querySelector('a').classList.remove("arrow-close");
+
+                }
+            });
+        }
+    });
+    lightboxer.show();
+}
 
 function disableMenuItems(menu_list) {
     let items = [];

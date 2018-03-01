@@ -13,6 +13,8 @@
     max-width: 900px !important
 
 @media screen and (max-width: 1199px)
+  .hello
+    background-image: url("/assets/images/fon-site-1200.jpg")
   .container
     width: 960px
   .hello
@@ -24,7 +26,13 @@
     .col
       padding: 0 5px
 
+  .menu__list
+    li
+      margin: 0 0 0 5px
+
 @media screen and (max-width: 991px)
+  .hello
+    background-image: url("/assets/images/fon-site-1050.jpg")
   .container
     width: 720px
   header
@@ -87,12 +95,16 @@
           height: 1rem !important
           top: calc(50% - 0.5rem) !important
 
+@Media screen and (min-width: 768px)
+  .hello
+    .col-4
+      justify-content: center
+
 @media screen and (max-width: 767px)
+  .hello
+    background-image: url("/assets/images/fon-site-800.jpg")
   .container
     width: 540px
-  .menu__list
-    li
-      margin: 0 5px
   .hello
     text-align: center
     .col-4
@@ -162,20 +174,40 @@
   .situations
     .col
       margin: 10px !important
+  header
+    .container
+      flex-direction: row
+
+    .rightBlock
+      .contacts
+        position: relative
+        top: initial
+        right: initial
+    .menu__btn
+      display: block
+      width: 30px
+      height: 30px
+      margin: auto
+    .menu__list
+      display: none !important
+    .contacts
+      display: none !important
 
 @media screen and (max-width: 575px)
-
   .hello
+    background-image: url("/assets/images/fon-site-600.jpg")
     height: auto
     padding-bottom: 10px
     margin-top: 40px
     &__title
-      font-size: 2.4rem
+      font-size: 1.8rem
       padding-top: 20px
+    &__place
+      font-size: 1.4rem
     .col-4
       justify-content: flex-start
   main
-    padding-top: 50px
+    padding-top: 85px
 
   .container
     width: auto
@@ -194,28 +226,6 @@
         margin-left: -8px !important
         height: 1.5rem !important
         top: calc(50% - 0.75rem) !important
-
-  header
-    .container
-      flex-direction: row
-    .logo
-      img
-        height: 50px
-
-    .rightBlock
-      .contacts
-        position: relative
-        top: initial
-        right: initial
-    .menu__btn
-      display: block
-      width: 30px
-      height: 30px
-      margin: auto
-  .menu__list
-    display: none !important
-  .contacts
-    display: none !important
 
   .services__list
     .col-2
@@ -248,14 +258,20 @@
 
 @media screen and (max-height: 480px)
   header
-    .logo
-      img
-        height: 40px
     .breadCrumbs
+      height: 32px
       a
         font-size: 0.8rem
         padding-top: 5px !important
         padding-bottom: 5px !important
+
+      li
+        &:after
+          height: 0.8rem !important
+        &.active
+          font-size: 0.8rem
+          padding-top: 5px !important
+
   .hello
     margin-top: 0
 
@@ -297,3 +313,8 @@
     .contacts__phone
       margin-top: 0
 
+@media screen and (min-width: 768px)
+  .hello
+    .photo
+      background: url("/assets/images/photo.png") no-repeat bottom
+      background-size: contain
