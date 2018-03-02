@@ -94,6 +94,13 @@ window.addEventListener("load", function () {
             }
         });
     });
+
+    document.querySelectorAll('.services__item').forEach(item => {
+        item.addEventListener('click', function () {
+            log(item);
+            location.href = item.querySelector('a').attributes.getNamedItem('href').value;
+        });
+    })
 });
 
 function showMenu() {

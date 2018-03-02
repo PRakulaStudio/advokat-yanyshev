@@ -136,9 +136,7 @@ h1 {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  -moz-hyphens: auto;
-  -webkit-hyphens: auto;
-  -ms-hyphens: auto;
+  text-indent: 0;
 }
 
 h2 + h3 {
@@ -1225,8 +1223,7 @@ footer .prakula__link img {
   }
 
   footer .logo {
-    flex-basis: 100%;
-    max-width: 100%;
+    display: none;
   }
   footer .phone {
     flex-basis: 100%;
@@ -1238,9 +1235,6 @@ footer .prakula__link img {
   }
   footer .prakula > div {
     background: #ddd;
-  }
-  footer .prakula .text-center {
-    text-align: left;
   }
 
   .services__text {
