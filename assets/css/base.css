@@ -146,9 +146,12 @@ h2 + h3 {
 }
 
 main {
-  padding-top: 100px;
+  padding-top: 150px;
   flex-grow: 1;
   position: relative;
+}
+main.without-breadcrumbs {
+  padding-top: 100px;
 }
 main ul {
   padding-left: 30px;
@@ -193,10 +196,6 @@ header, footer, section {
 
 .text-accent {
   color: #9d221f;
-}
-
-.without-breadcrumbs .hello {
-  margin-top: 0;
 }
 
 .menu__list--hover > li:hover > a {
@@ -316,7 +315,6 @@ header .rightBlock {
 
 .breadCrumbs {
   box-shadow: 5px 5px 20px rgba(100, 100, 100, 0.3);
-  position: absolute;
   background: #f9f9f9;
   width: 100%;
   overflow: hidden;
@@ -403,12 +401,19 @@ header .rightBlock {
   background-image: url("/assets/icons/message.svg");
 }
 
+main.without-breadcrumbs .hello {
+  margin-top: -100px;
+  padding-top: 100px;
+}
+
 .hello {
-  height: calc(100vh - 99px);
+  height: 100vh;
   overflow: hidden;
   background: url("/assets/images/fon-site.jpg") no-repeat center;
   background-size: cover;
   position: relative;
+  margin-top: -155px;
+  padding-top: 155px;
 }
 .hello .container, .hello .row {
   height: 100%;
@@ -899,6 +904,7 @@ footer .prakula__link img {
 
 .about_me {
   margin-top: 40px;
+  padding-top: 20px;
 }
 .about_me .awards .row {
   padding: 15px 0;
@@ -1024,8 +1030,13 @@ footer .prakula__link img {
   }
 }
 @media screen and (max-width: 991px) {
+  main.without-breadcrumbs .hello {
+    padding-top: 150px;
+  }
+
   .hello {
     background-image: url("/assets/images/fon-site-1050.jpg");
+    padding-top: 200px;
   }
 
   .container {
@@ -1110,6 +1121,20 @@ footer .prakula__link img {
   }
 }
 @media screen and (max-width: 767px) {
+  main.without-breadcrumbs .hello {
+    padding-top: 100px;
+  }
+
+  .hello {
+    background-image: url("/assets/images/fon-site-1050.jpg");
+    padding-top: 150px;
+  }
+
+  .about_me {
+    margin-top: 0;
+    padding-top: 0;
+  }
+
   .hello {
     background-image: url("/assets/images/fon-site-800.jpg");
   }
@@ -1244,10 +1269,6 @@ footer .prakula__link img {
   }
   .hello .col-4 {
     justify-content: flex-start;
-  }
-
-  main {
-    padding-top: 115px;
   }
 
   main.without-breadcrumbs {

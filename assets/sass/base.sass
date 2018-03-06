@@ -39,9 +39,11 @@ h2 + h3
   margin-bottom: 0.5rem
 
 main
-  padding-top: 100px
+  padding-top: 150px
   flex-grow: 1
   position: relative
+  &.without-breadcrumbs
+    padding-top: 100px
 
   ul
     padding-left: 30px
@@ -81,10 +83,6 @@ header, footer, section
 
 .text-accent
   color: $color-accent
-
-.without-breadcrumbs
-  .hello
-    margin-top: 0
 
 .menu__list--hover
   > li
@@ -203,7 +201,6 @@ header
 
 .breadCrumbs
   +box-shadow
-  position: absolute
   background: $color-background
   width: 100%
   overflow: hidden
@@ -298,12 +295,19 @@ header
       &:before
         background-image: url("/assets/icons/message.svg")
 
+main.without-breadcrumbs
+  .hello
+    margin-top: -100px
+    padding-top: 100px
+
 .hello
-  height: calc(100vh - 99px)
+  height: 100vh
   overflow: hidden
   background: url("/assets/images/fon-site.jpg") no-repeat center
   background-size: cover
   position: relative
+  margin-top: -155px
+  padding-top: 155px
 
   .container, .row
     height: 100%
@@ -779,6 +783,7 @@ footer
 
 .about_me
   margin-top: 40px
+  padding-top: 20px
   .awards
     .row
       padding: 15px 0
