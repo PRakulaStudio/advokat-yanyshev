@@ -19,7 +19,10 @@
     width: 960px
   .hello
     .photo
-      right: 30px
+      right: 0
+      max-width: 40%
+      flex-basis: 40%
+
   .services__list, .warning .container, .warning__lists, .practice, .situations .container
     max-width: 940px !important
   .warning
@@ -207,8 +210,9 @@
     .col-4
       justify-content: flex-start
   main
+    padding-top: 115px
+  main.without-breadcrumbs
     padding-top: 85px
-
   .container
     width: auto
   ul
@@ -244,17 +248,27 @@
       flex-basis: 100%
       max-width: 100%
     .prakula
-      background: none !important
-      padding-bottom: 10px
       > div
         background: #ddd
+    .text-center
+      text-align: left
   .services__text
     max-height: 15rem
   .services__list, .warning .container, .warning__lists, .practice, .situations .container
     max-width: 290px !important
 
+  .lightboxer-container
+    > span, > .close
+      width: 10vw
+      height: 10vw
+      &:before
+        font-size: 5vw
+    > .close
+      &:before
+        font-size: 9vw
+
 @media screen and (max-height: 480px)
-  header
+  //header
     .breadCrumbs
       height: 32px
       a
@@ -313,5 +327,5 @@
 @media screen and (min-width: 768px)
   .hello
     .photo
-      background: url("/assets/images/photo.png") no-repeat bottom
+      background: url("/assets/images/photo.png") no-repeat bottom right
       background-size: contain

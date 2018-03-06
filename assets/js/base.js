@@ -27,7 +27,6 @@ window.addEventListener("load", function () {
     if (menuItem != null)
         menuItem.parentNode.classList.add('active');
 
-    disableMenuItems(document.querySelector(".menu__list"));
 
     let serviceSituations = document.querySelector(".service-situations ul");
     if (serviceSituations != null) {
@@ -63,7 +62,12 @@ window.addEventListener("load", function () {
             lightboxer.show();
 
             function setImgHtml(img) {
-                lightboxer.setHtml('<span>&#8592;</span><span>&#8594;</span>' + img.outerHTML);
+                //lightboxer.setHtml('<span>&#8592;</span><span>&#8594;</span>' + img.outerHTML);
+                lightboxer.setHtml(img.outerHTML + '<span></span><span></span><div class="close"></div>');
+                lightboxer.div.querySelector('.close').addEventListener('click', function (event) {
+                    lightboxer.closeBox();
+                    document.removeEventListener('keydown', listener, false);
+                })
                 let spans = lightboxer.div.querySelectorAll('span');
                 spans[0].addEventListener('click', evt => {
                     evt.preventDefault();
@@ -74,11 +78,39 @@ window.addEventListener("load", function () {
                     toNext();
                 });
                 lightboxer.div.querySelectorAll('img').forEach(img => {
-                    img.addEventListener('click', function () {
-                        lightboxer.closeBox();
-                        document.removeEventListener('keydown', listener, false);
-                    });
+
+                    let initialPoint;
+                    let finalPoint;
+                    img.addEventListener('touchstart', function (event) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                        initialPoint = event.changedTouches[0];
+                    }, false);
+                    img.addEventListener('touchend', function (event) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                        finalPoint = event.changedTouches[0];
+                        let xAbs = Math.abs(initialPoint.pageX - finalPoint.pageX);
+                        let yAbs = Math.abs(initialPoint.pageY - finalPoint.pageY);
+                        if (xAbs > 20 || yAbs > 20) {
+                            if (xAbs > yAbs) {
+                                if (finalPoint.pageX < initialPoint.pageX) {
+                                    toNext()
+                                }
+                                else {
+                                    toPrev()
+                                }
+                            }
+                        }
+                        else{
+                            toNext();
+                        }
+                    }, false);
+                    img.addEventListener('click', function (event) {
+                        toNext()
+                    })
                 });
+
             }
 
             function toPrev() {
@@ -101,6 +133,9 @@ window.addEventListener("load", function () {
             location.href = item.querySelector('a').attributes.getNamedItem('href').value;
         });
     })
+    document.querySelectorAll('[data-mce-bogus]').forEach(item => {
+        item.remove();
+    });
 });
 
 function showMenu() {
@@ -110,13 +145,15 @@ function showMenu() {
     let contacts = header.querySelector(".contacts").outerHTML;
 
     let lightboxer = new Lightboxer();
-    lightboxer.setHtml("<div class='logo__wrapper'><div class='container'>" + logo + "<div class='menu__btn--close'><img src='/assets/icons/icons8-cancel.svg' alt=''></div></div></div><div>" + contacts + "</div><div class='menu__wrapper'>" + ul + "</div>");
+    lightboxer.setHtml("<div class='mobile_menu__wrapper'><div class='logo__wrapper'>" + logo + "<div class='menu__btn--close'><img src='/assets/icons/icons8-cancel.svg' alt=''></div></div>" + contacts + "<div class='menu__wrapper'>" + ul + "</div></div>");
     lightboxer.div.querySelector('.menu__btn--close').addEventListener('click', evt => {
         lightboxer.closeBox();
     });
-    let items = disableMenuItems(lightboxer.div.querySelector(".menu__list"));
+    let menu__list = lightboxer.div.querySelector(".menu__list");
+    menu__list.classList.remove('menu__list--hover');
+    let items = disableMenuItems(menu__list);
     items.forEach(item => {
-        item.querySelector('a').classList.add("arrow-close", "arrow");
+        item.querySelector('a').classList.add("arrow");
         let ul = item.querySelector("ul");
         if (ul != null) {
             item.addEventListener('click', e => {
@@ -135,12 +172,15 @@ function showMenu() {
                         ul.classList.remove("o-none");
                     }, 20);
                     item.querySelector('a').classList.remove("arrow-close");
-
                 }
             });
         }
     });
     lightboxer.show();
+}
+
+function showMenu2() {
+    log('dasd');
 }
 
 function disableMenuItems(menu_list) {
@@ -158,7 +198,7 @@ function disableMenuItems(menu_list) {
 
 
 // UTILS
-function log(s) { // Упрощенный лог
+function log(s) { // -Упрощенный лог
     console.log(s);
 }
 
