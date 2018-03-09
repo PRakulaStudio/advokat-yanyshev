@@ -102,7 +102,7 @@ window.addEventListener("load", function () {
                                 }
                             }
                         }
-                        else{
+                        else {
                             toNext();
                         }
                     }, false);
@@ -153,10 +153,12 @@ function showMenu() {
     menu__list.classList.remove('menu__list--hover');
     let items = disableMenuItems(menu__list);
     items.forEach(item => {
-        item.querySelector('a').classList.add("arrow");
         let ul = item.querySelector("ul");
         if (ul != null) {
-            item.addEventListener('click', e => {
+            let arrow = document.createElement('span');
+            arrow.classList.add("arrow");
+            item.append(arrow);
+            arrow.addEventListener('click', e => {
                 if (!ul.classList.contains("d-none")) {
                     let func = function () {
                         ul.classList.add("d-none");
@@ -164,14 +166,14 @@ function showMenu() {
                     };
                     ul.classList.add("o-none");
                     ul.addEventListener("transitionend", func, false);
-                    item.querySelector('a').classList.add("arrow-close");
+                    arrow.classList.add("arrow-close");
                 }
                 else {
                     ul.classList.remove("d-none");
                     setTimeout(function () {
                         ul.classList.remove("o-none");
                     }, 20);
-                    item.querySelector('a').classList.remove("arrow-close");
+                    arrow.classList.remove("arrow-close");
                 }
             });
         }
@@ -187,9 +189,9 @@ function disableMenuItems(menu_list) {
     let items = [];
     menu_list.querySelectorAll("li").forEach(value => {
         if (value.querySelector("ul")) {
-            value.querySelector("a").addEventListener('click', evt => {
+            /*value.querySelector("a").addEventListener('click', evt => {
                 evt.preventDefault();
-            });
+            });*/
             items.push(value);
         }
     });
