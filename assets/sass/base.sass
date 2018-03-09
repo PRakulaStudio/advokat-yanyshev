@@ -204,7 +204,7 @@ header
   background: $color-background
   width: 100%
   overflow: hidden
-  height: 48px
+  height: 44px
   z-index: 14
 
   ul
@@ -317,6 +317,8 @@ main.without-breadcrumbs
     display: flex
     flex-direction: column
     z-index: 3
+    flex-basis: 50%
+    max-width: 50%
 
   .photo
     display: flex
@@ -329,8 +331,8 @@ main.without-breadcrumbs
     width: 90%
     height: 90%
     z-index: 2
-    flex-basis: 70%
-    max-width: 70%
+    flex-basis: 50%
+    max-width: 50%
 
     &__img
       margin-bottom: -10px
@@ -353,8 +355,10 @@ main.without-breadcrumbs
         margin-top: -10px
   &__title
     line-height: 1
-    font-size: 2.75rem
-    margin: 20px 0
+    //font-size: 2.75rem
+    //margin: 20px 0
+    font-size: 3rem
+    margin: 0 0 20px 0
     text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.4)
 
   &__place
@@ -376,15 +380,19 @@ main.without-breadcrumbs
     font-weight: 600
 
     &:before
+      +box-shadow
       content: ''
       position: absolute
       top: 0
-      left: 0
-      width: 70%
+      left: -100%
+      width: 200%
       height: 100%
       background: transparentize($color-blockquotes, 0.4)
+      $radius: 15px
+      border-top-right-radius: $radius
+      border-bottom-right-radius: $radius
 
-    &:after
+//    &:after
       position: absolute
       top: 0
       left: 70%
@@ -611,6 +619,8 @@ footer
       img
         height: 50px
         margin-bottom: -5px
+      amp-img img
+        margin-bottom: 0
 
 .practice
   +box-shadow
@@ -676,8 +686,10 @@ footer
     -webkit-touch-callout: none
   > img
     object-fit: contain
-    max-width: 80vw
-    max-height: 80vh
+    max-height: 80%
+    max-width: 80%
+    width: auto
+    height: auto
     margin: auto
   .mobile_menu__wrapper
     background: #ffffff
@@ -783,7 +795,6 @@ footer
 
 .about_me
   margin-top: 40px
-  padding-top: 20px
   .awards
     .row
       padding: 15px 0

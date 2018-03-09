@@ -3,12 +3,6 @@
 @media screen and (max-width: 1399px)
   .container
     +content-width-normal
-  .hello
-    &__tituls
-      &:after
-        content: none
-      &:before
-        width: 100%
   .services__list, .warning .container, .warning__lists, .practice, .situations .container
     max-width: 900px !important
 
@@ -31,7 +25,7 @@
 
   .menu__list
     li
-      margin: 0 0 0 5px
+      margin: 0 0 0 10px
 
 @media screen and (max-width: 991px)
   main.without-breadcrumbs
@@ -101,7 +95,13 @@
           margin-left: 0 !important
           height: 1rem !important
           top: calc(50% - 0.5rem) !important
-
+  .largetext__text
+    img
+      max-width: 50%
+      object-fit: cover
+      object-position: center
+  .about_me
+    padding-top: 20px
 @Media screen and (min-width: 768px)
   .hello
     .col-4
@@ -130,10 +130,6 @@
       display: none
     &__tituls
       text-align: left
-      &:after
-        content: none
-      &:before
-        width: 100%
     &__title
       font-size: 3rem
     &__place
@@ -208,6 +204,9 @@
       display: none !important
     .contacts
       display: none !important
+  .largetext__text
+    img
+      max-width: 490px
 
 @media screen and (max-width: 575px)
   .hello
@@ -279,6 +278,9 @@
       &:before
         font-size: 9vw
 
+  .largetext__text
+    img
+      max-width: 270px
 @media screen and (max-height: 480px)
   //header
     .breadCrumbs
@@ -324,10 +326,6 @@
       display: none
     &__tituls
       text-align: left
-      &:after
-        content: none
-      &:before
-        width: 100%
 
 @media screen and (max-width: 568px) and (max-height: 320px)
   .hello
