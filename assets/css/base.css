@@ -38,27 +38,29 @@
 .modal-form {
   background: #fff;
   margin: auto;
-  padding: 10px;
+  padding: 0 10px;
   width: 30vw;
   min-width: 300px;
   line-height: 1.75;
   display: flex;
   position: relative;
   flex-direction: column;
+  border-radius: 10px;
 }
 
 .modal-form .btn-modal-form-close {
   content: "";
   display: block;
   position: absolute;
-  width: 25px;
-  height: 25px;
-  right: 0;
-  top: 0;
-  background: #fabb00 url("/assets/icons/icons8-delete-100.png") no-repeat center;
+  width: 40px;
+  height: 40px;
+  right: -15px;
+  top: -15px;
+  background: url("/assets/icons/close.svg") no-repeat center;
   background-size: cover;
   cursor: pointer;
   z-index: 3;
+  border-radius: 40px;
 }
 
 .modal-form .wrapper {
@@ -213,6 +215,7 @@ header, footer, section {
   list-style: none;
   display: flex;
   margin-bottom: 0;
+  margin-top: 10px;
 }
 .menu__list li {
   margin: 0 10px;
@@ -250,6 +253,9 @@ header, footer, section {
   padding: 0 30px 0 3px;
   margin: 0;
   position: relative;
+}
+.menu__list > li ul li:nth-child(2n) {
+  background: #ececec;
 }
 .menu__list > li ul li:before {
   content: "";
@@ -378,10 +384,114 @@ header .rightBlock {
 .contacts__email a:before {
   background-image: url("/assets/icons/message.svg");
 }
+.contacts__fb {
+  margin: auto 0;
+}
+.contacts__fb img {
+  height: 20px;
+}
+.contacts__cities {
+  position: relative;
+  margin-right: 30px;
+  width: 160px;
+  display: none;
+}
+.contacts__cities button {
+  background: none;
+  border: none;
+  text-decoration: underline;
+  display: block;
+  position: relative;
+  padding-right: 20px;
+  font-size: 1rem;
+  margin: auto 0 auto auto;
+}
+.contacts__cities button:after {
+  top: 0;
+  right: 0;
+  position: absolute;
+  content: "";
+  display: block;
+  background: url("/assets/icons/arrow.svg");
+  background-size: contain;
+  width: 16px;
+  height: 16px;
+  transform: rotate(90deg);
+  transition: all 0.25s linear;
+}
+.contacts__cities button:focus {
+  outline: none;
+}
+.contacts__cities button.focus:after {
+  transform: rotate(-90deg);
+}
+.contacts__cities button.focus + ul {
+  display: block;
+}
+.contacts__cities ul {
+  box-shadow: 0 2px 6px #a0a0a0;
+  border-top: none;
+  display: none;
+  width: 100%;
+  position: absolute;
+  background: #fff;
+  z-index: 10;
+  text-align: left;
+  list-style: none;
+  padding: 0;
+}
+.contacts__cities ul li {
+  padding: 2px 10px;
+  cursor: pointer;
+}
+.contacts__cities ul li a, .contacts__cities ul li a:hover {
+  text-decoration: none;
+}
+.contacts__cities ul li:hover {
+  position: relative;
+  color: #9d221f;
+}
+.contacts__cities ul li:hover:before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "";
+  border-top: 3px solid #9d221f;
+  display: block;
+  height: 1px;
+  width: 50%;
+}
 
 main.without-breadcrumbs .hello {
   margin-top: -100px;
   padding-top: 95px;
+}
+
+.btn_form {
+  background: linear-gradient(0, #9d221f, #d2524f);
+  border: none;
+  padding: 10px 15px;
+  color: #fff;
+  font-weight: bold;
+  line-height: 1rem;
+  margin: auto 0 auto auto;
+  position: relative;
+  cursor: pointer;
+}
+.btn_form:after {
+  content: "";
+  background: url("/assets/images/blick.png") no-repeat center center;
+  height: 100%;
+  width: 100%;
+  display: block;
+  top: 0;
+  left: 0;
+  position: absolute;
+  background-size: 80px;
+  animation: blick 4s infinite ease-in;
+}
+.btn_form:hover {
+  background: linear-gradient(0, #721917, #be3430);
 }
 
 .hello {
@@ -392,6 +502,9 @@ main.without-breadcrumbs .hello {
   position: relative;
   margin-top: -150px;
   padding-top: 150px;
+  display: flex;
+}
+.hello .phone-wrapper {
   display: flex;
 }
 .hello .container, .hello .row {
@@ -413,8 +526,8 @@ main.without-breadcrumbs .hello {
   display: flex;
   flex-direction: column;
   z-index: 3;
-  flex-basis: 50%;
-  max-width: 50%;
+  flex-basis: 60%;
+  max-width: 60%;
   padding: 20px 0;
 }
 .hello .photo {
@@ -425,8 +538,8 @@ main.without-breadcrumbs .hello {
   width: 90%;
   height: 90%;
   z-index: 2;
-  flex-basis: 50%;
-  max-width: 50%;
+  flex-basis: 40%;
+  max-width: 40%;
   margin: auto auto 0;
 }
 .hello .photo__img {
@@ -956,35 +1069,51 @@ footer .prakula__link amp-img img {
 }
 
 /* up end */
-.modal-form h3 {
+.modal-form {
+  width: 50vw;
+  padding-right: 15px;
+}
+.modal-form .modal__wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -5px;
+  margin-right: -5px;
+}
+.modal-form .modal__photo, .modal-form .modal__info {
+  box-sizing: border-box;
+  word-wrap: break-word;
+  margin-left: 5px;
+  margin-right: 5px;
+  width: calc(50% - 10px);
+}
+.modal-form .modal__photo {
+  background: url("/assets/images/modal_photo.png") no-repeat center bottom;
+  background-size: contain;
+  margin-top: 20px;
+}
+.modal-form .modal__info {
+  padding: 0 10px 0 0;
+  box-shadow: 5px 5px 10px #a0a0a0;
+  margin-bottom: 15px;
+}
+.modal-form .btn_form {
+  margin: auto;
+  display: block;
+}
+.modal-form h3, .modal-form h2 {
   margin-bottom: 0;
   text-align: center;
-  text-transform: uppercase;
 }
 .modal-form input, .modal-form textarea {
   width: 100%;
   border: 1px solid #9d221f;
   padding: 10px;
-  border-radius: 10px;
 }
-.modal-form p {
-  margin: 5px 0;
+.modal-form .modal_contacts {
+  display: flex;
 }
-.modal-form input[type='text']:focus, .modal-form textarea:focus {
-  box-shadow: 0 0 3pt 2pt #ffcccc;
-  outline: none;
-}
-.modal-form button {
-  width: 100%;
-  padding: 10px 0;
-  background: none;
-  border: 1px solid #9d221f;
-  border-radius: 10px;
-  cursor: pointer;
-}
-.modal-form button:focus {
-  outline: none;
-  background: #eee;
+.modal-form .modal_contacts input:first-child {
+  margin-right: 10px;
 }
 
 .contacts__phone a:before, .contacts__email a:before {
@@ -1114,9 +1243,13 @@ footer .prakula__link amp-img img {
   .hello__consultation {
     font-size: 1.1rem;
   }
-  .hello .col-4, .hello .col-2 {
-    flex-basis: 50%;
-    max-width: 50%;
+  .hello .col-4 {
+    flex-basis: 55%;
+    max-width: 55%;
+  }
+  .hello .col-2 {
+    flex-basis: 45%;
+    max-width: 45%;
   }
   .hello .photo {
     right: -20px;
@@ -1294,6 +1427,12 @@ footer .prakula__link amp-img img {
   .hello .col-4 {
     justify-content: flex-start;
   }
+  .hello .phone-wrapper {
+    flex-direction: column;
+  }
+  .hello .phone-wrapper .btn--open_form {
+    margin: 0 auto 15px;
+  }
 
   main.without-breadcrumbs {
     padding-top: 85px;
@@ -1413,5 +1552,13 @@ footer .prakula__link amp-img img {
   .hello {
     min-height: auto;
     height: auto;
+  }
+}
+@keyframes blick {
+  from {
+    background-position: -500%;
+  }
+  to {
+    background-position: 500%;
   }
 }

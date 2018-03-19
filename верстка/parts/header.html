@@ -6,32 +6,51 @@
     </div>
     <div class="rightBlock">
         <div class="contacts">
+            <div class="contacts__cities">
+                <button>Екатеринбург</button>
+                <ul>
+                    <li><a href="/">Екатеринбург</a></li>
+                    <li><a href="/tagil/">Нижний Тагил</a></li>
+                    <li><a href="/chelyabinsk/">Челябинск</a></li>
+                    <li><a href="/tyumen/">Тюмень</a></li>
+                    <li><a href="/magnitogorsk/">Магнитогорск</a></li>
+                    <li><a href="/surgut/">Сургут</a></li>
+                </ul>
+            </div>
             <div class="contacts__email">
                 <a class="" href="mailto:yanyshev.constantin@yandex.ru">yanyshev.constantin@yandex.ru</a>
             </div>
             <div class="contacts__phone">
                 <a class="" href="tel:+7 (912) 631-20-28">+7 (912) 631-20-28</a>
             </div>
+            <div class="contacts__fb">
+                <a href="https://www.facebook.com/profile.php?id=100008238392263" target="_blank">
+                    <img src="/assets/icons/facebook.png" alt="facebook">
+                </a>
+            </div>
         </div>
         <div class="btn menu__btn">
             <img src="/assets/icons/menu(black).svg" alt="">
         </div>
         <nav>
-            <ul class="menu__list menu__list--hover">
+            <ul class="menu__list menu__list--hover" data-template="header-menu">
+                <li class="d-none" data-city="Екатеринбург"><a href="/">Главная</a></li>
+                <li class="d-none" data-city="Нижний тагил"><a href="/tagil/">Главная</a></li>
+                <li class="d-none" data-city="Челябинск"><a href="/chelyabinsk/">Главная</a></li>
+                <li class="d-none" data-city="Тюмень"><a href="/tyumen/">Главная</a></li>
+                <li class="d-none" data-city="Магнитогорск"><a href="/magnitogorsk/">Главная</a></li>
+                <li class="d-none" data-city="Сургут"><a href="/surgut/">Главная</a></li>
                 <li>
-                    <a href="">
-                        Главная
-                    </a>
+                    <a href="/about/">Биография</a>
+                    <ul>
+                        <li><a href="/about/obrazovanie_i_opyit_rabotyi/">Образование и опыт работы</a></li>
+                        <li><a href="/about/nagradyi_i_pooschreniya/">Награды и поощрения</a></li>
+                        <li><a href="/about/sverdlovskaya_oblastnaya_gildiya_advokatov/">Свердловская областная гильдия адвокатов</a></li>
+                        <li><a href="/about/advokatskaya_palata_sverdlovskoy_oblasti/">Адвокатская палата Свердловской области</a></li>
+                    </ul>
                 </li>
-                <li>
-                    <a href="">
-                        Об адвокате
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        Услуги
-                    </a>
+                <li class="d-none" data-city="Екатеринбург">
+                    <a href="/uslugi/">Услуги</a>
                     <ul>
                         <li><a href="/uslugi/advokat_po_narkotikam/">Адвокат по наркотикам</a></li>
                         <li><a href="/uslugi/advokat_po_ubiystvu/">Адвокат по убийству</a></li>
@@ -41,35 +60,197 @@
                         <li><a href="/uslugi/advokat_po_doljnostnyim_prestupleniyam/">Адвокат по должностным преступлениям</a></li>
                         <li><a href="/uslugi/advokat_po_kraje/">Адвокат по краже</a></li>
                         <li><a href="/uslugi/advokat_po_160_state_uk_rf/">Адвокат по присвоению и растрате</a></li>
-                        <li><a href="/uslugi/advokat_po_razboyam/">Адвокат по разбоям</a></li>
+                        <li><a href="/uslugi/advokat_po_razboyam/">Адвокат по разбою</a></li>
                         <li><a href="/uslugi/advokat_po_moshennichestvu/">Адвокат по мошенничеству</a></li>
-                        <li><a href="/uslugi/advokat_po_grabejam/">Адвокат по грабежам</a></li>
-                        <li><a href="/uslugi/advokat_po_vyimogatelstvam/">Адвокат по вымогательствам</a></li>
-                        <li><a href="/uslugi/advokat_po_vzyatkam/">Адвокат по взяткам</a></li>
+                        <li><a href="/uslugi/advokat_po_grabejam/">Адвокат по грабежу</a></li>
+                        <li><a href="/uslugi/advokat_po_vyimogatelstvam/">Адвокат по вымогательству</a></li>
+                        <li><a href="/uslugi/advokat_po_vzyatkam/">Адвокат по взятке</a></li>
                         <li><a href="/uslugi/ugolovnyiy_advokat_po_dtp/">Уголовный адвокат по ДТП</a></li>
-                        <li><a href="/uslugi/advokat_po_ugonu_avtomobiley/">Адвокат по угону автомобилей</a></li>
+                        <li><a href="/uslugi/advokat_po_ugonu_avtomobiley/">Адвокат по угону автомобиля</a></li>
                         <li><a href="/uslugi/advokat_po_st_213_uk_rf/">Адвокат по хулиганству</a></li>
+                        <li><a href="/uslugi/advoka_po_samoupravstvu/">Адвокат по самоуправству</a></li>
                         <li><a href="/uslugi/nalogovyiy_advokat/">Налоговый адвокат</a></li>
                         <li><a href="/uslugi/tamojennyiy_advokat/">Таможенный адвокат</a></li>
                         <li><a href="/uslugi/advokat_doznanie/">Адвокат на следствии и дознании</a></li>
                         <li><a href="/uslugi/advokat_svidetelya/">Адвокат свидетеля</a></li>
-                        <li><a href="/uslugi/advokat_po_udo/">Адвокат по УДО</a></li>
+                        <li><a href="/uslugi/advokat_predstavitel_v_ugolovnom_protsesse/">Адвокат-представитель в уголовном процессе</a></li>
                         <li><a href="/uslugi/ugolovnaya_apellyatsiya/">Уголовная апелляция</a></li>
                         <li><a href="/uslugi/ugolovnaya_kassatsiya/">Уголовная кассация</a></li>
                         <li><a href="/uslugi/peresmotr_ugolovnogo_dela/">Пересмотр уголовного дела</a></li>
-                        <li><a href="/uslugi/advokat_predstavitel_v_ugolovnom_protsesse/">Адвокат-представитель в уголовном процессе</a></li>
-                        <li><a href="/uslugi/advoka_po_samoupravstvu/">Адвокат по самоуправству</a></li>
+                        <li><a href="/uslugi/advokat_po_udo/">Адвокат по УДО</a></li>
+                    </ul>
+                </li>
+                <li class="d-none" data-city="Нижний тагил">
+                    <a href="/tagil/uslugi/">Услуги</a>
+                    <ul>
+                        <li><a href="/tagil/uslugi/advokat_po_narkotikam/">Адвокат по наркотикам</a></li>
+                        <li><a href="/tagil/uslugi/advokat_po_ubiystvu/">Адвокат по убийству</a></li>
+                        <li><a href="/tagil/uslugi/advokat_po_ekonomicheskim_prestupleniyam/">Адвокат по экономическим преступлениям</a></li>
+                        <li><a href="/tagil/uslugi/prichinenie_vreda_zdorovyu/">Причинение вреда здоровью</a></li>
+                        <li><a href="/tagil/uslugi/advokat_dlya_biznesa/">Адвокат для бизнеса</a></li>
+                        <li><a href="/tagil/uslugi/advokat_po_doljnostnyim_prestupleniyam/">Адвокат по должностным преступлениям</a></li>
+                        <li><a href="/tagil/uslugi/advokat_po_kraje/">Адвокат по краже</a></li>
+                        <li><a href="/tagil/uslugi/advokat_po_160_state_uk_rf/">Адвокат по присвоению и растрате</a></li>
+                        <li><a href="/tagil/uslugi/advokat_po_razboyam/">Адвокат по разбою</a></li>
+                        <li><a href="/tagil/uslugi/advokat_po_moshennichestvu/">Адвокат по мошенничеству</a></li>
+                        <li><a href="/tagil/uslugi/advokat_po_grabejam/">Адвокат по грабежу</a></li>
+                        <li><a href="/tagil/uslugi/advokat_po_vyimogatelstvam/">Адвокат по вымогательству</a></li>
+                        <li><a href="/tagil/uslugi/advokat_po_vzyatkam/">Адвокат по взятке</a></li>
+                        <li><a href="/tagil/uslugi/ugolovnyiy_advokat_po_dtp/">Уголовный адвокат по ДТП</a></li>
+                        <li><a href="/tagil/uslugi/advokat_po_ugonu_avtomobiley/">Адвокат по угону автомобиля</a></li>
+                        <li><a href="/tagil/uslugi/advokat_po_st_213_uk_rf/">Адвокат по хулиганству</a></li>
+                        <li><a href="/tagil/uslugi/advoka_po_samoupravstvu/">Адвокат по самоуправству</a></li>
+                        <li><a href="/tagil/uslugi/nalogovyiy_advokat/">Налоговый адвокат</a></li>
+                        <li><a href="/tagil/uslugi/tamojennyiy_advokat/">Таможенный адвокат</a></li>
+                        <li><a href="/tagil/uslugi/advokat_doznanie/">Адвокат на следствии и дознании</a></li>
+                        <li><a href="/tagil/uslugi/advokat_svidetelya/">Адвокат свидетеля</a></li>
+                        <li><a href="/tagil/uslugi/advokat_predstavitel_v_ugolovnom_protsesse/">Адвокат-представитель в уголовном процессе</a></li>
+                        <li><a href="/tagil/uslugi/ugolovnaya_apellyatsiya/">Уголовная апелляция</a></li>
+                        <li><a href="/tagil/uslugi/ugolovnaya_kassatsiya/">Уголовная кассация</a></li>
+                        <li><a href="/tagil/uslugi/peresmotr_ugolovnogo_dela/">Пересмотр уголовного дела</a></li>
+                        <li><a href="/tagil/uslugi/advokat_po_udo/">Адвокат по УДО</a></li>
+                    </ul>
+                </li>
+                <li class="d-none" data-city="Челябинск">
+                    <a href="/chelyabinsk/uslugi/">Услуги</a>
+                    <ul>
+                        <li><a href="/chelyabinsk/uslugi/advokat_po_narkotikam/">Адвокат по наркотикам</a></li>
+                        <li><a href="/chelyabinsk/uslugi/advokat_po_ubiystvu/">Адвокат по убийству</a></li>
+                        <li><a href="/chelyabinsk/uslugi/advokat_po_ekonomicheskim_prestupleniyam/">Адвокат по экономическим преступлениям</a></li>
+                        <li><a href="/chelyabinsk/uslugi/prichinenie_vreda_zdorovyu/">Причинение вреда здоровью</a></li>
+                        <li><a href="/chelyabinsk/uslugi/advokat_dlya_biznesa/">Адвокат для бизнеса</a></li>
+                        <li><a href="/chelyabinsk/uslugi/advokat_po_doljnostnyim_prestupleniyam/">Адвокат по должностным преступлениям</a></li>
+                        <li><a href="/chelyabinsk/uslugi/advokat_po_kraje/">Адвокат по краже</a></li>
+                        <li><a href="/chelyabinsk/uslugi/advokat_po_160_state_uk_rf/">Адвокат по присвоению и растрате</a></li>
+                        <li><a href="/chelyabinsk/uslugi/advokat_po_razboyam/">Адвокат по разбою</a></li>
+                        <li><a href="/chelyabinsk/uslugi/advokat_po_moshennichestvu/">Адвокат по мошенничеству</a></li>
+                        <li><a href="/chelyabinsk/uslugi/advokat_po_grabejam/">Адвокат по грабежу</a></li>
+                        <li><a href="/chelyabinsk/uslugi/advokat_po_vyimogatelstvam/">Адвокат по вымогательству</a></li>
+                        <li><a href="/chelyabinsk/uslugi/advokat_po_vzyatkam/">Адвокат по взятке</a></li>
+                        <li><a href="/chelyabinsk/uslugi/ugolovnyiy_advokat_po_dtp/">Уголовный адвокат по ДТП</a></li>
+                        <li><a href="/chelyabinsk/uslugi/advokat_po_ugonu_avtomobiley/">Адвокат по угону автомобиля</a></li>
+                        <li><a href="/chelyabinsk/uslugi/advokat_po_st_213_uk_rf/">Адвокат по хулиганству</a></li>
+                        <li><a href="/chelyabinsk/uslugi/advoka_po_samoupravstvu/">Адвокат по самоуправству</a></li>
+                        <li><a href="/chelyabinsk/uslugi/nalogovyiy_advokat/">Налоговый адвокат</a></li>
+                        <li><a href="/chelyabinsk/uslugi/tamojennyiy_advokat/">Таможенный адвокат</a></li>
+                        <li><a href="/chelyabinsk/uslugi/advokat_doznanie/">Адвокат на следствии и дознании</a></li>
+                        <li><a href="/chelyabinsk/uslugi/advokat_svidetelya/">Адвокат свидетеля</a></li>
+                        <li><a href="/chelyabinsk/uslugi/advokat_predstavitel_v_ugolovnom_protsesse/">Адвокат-представитель в уголовном процессе</a></li>
+                        <li><a href="/chelyabinsk/uslugi/ugolovnaya_apellyatsiya/">Уголовная апелляция</a></li>
+                        <li><a href="/chelyabinsk/uslugi/ugolovnaya_kassatsiya/">Уголовная кассация</a></li>
+                        <li><a href="/chelyabinsk/uslugi/peresmotr_ugolovnogo_dela/">Пересмотр уголовного дела</a></li>
+                        <li><a href="/chelyabinsk/uslugi/advokat_po_udo/">Адвокат по УДО</a></li>
+                    </ul>
+                </li>
+                <li class="d-none" data-city="Тюмень">
+                    <a href="/tyumen/uslugi/">Услуги</a>
+                    <ul>
+                        <li><a href="/tyumen/uslugi/advokat_po_narkotikam/">Адвокат по наркотикам</a></li>
+                        <li><a href="/tyumen/uslugi/advokat_po_ubiystvu/">Адвокат по убийству</a></li>
+                        <li><a href="/tyumen/uslugi/advokat_po_ekonomicheskim_prestupleniyam/">Адвокат по экономическим преступлениям</a></li>
+                        <li><a href="/tyumen/uslugi/prichinenie_vreda_zdorovyu/">Причинение вреда здоровью</a></li>
+                        <li><a href="/tyumen/uslugi/advokat_dlya_biznesa/">Адвокат для бизнеса</a></li>
+                        <li><a href="/tyumen/uslugi/advokat_po_doljnostnyim_prestupleniyam/">Адвокат по должностным преступлениям</a></li>
+                        <li><a href="/tyumen/uslugi/advokat_po_kraje/">Адвокат по краже</a></li>
+                        <li><a href="/tyumen/uslugi/advokat_po_160_state_uk_rf/">Адвокат по присвоению и растрате</a></li>
+                        <li><a href="/tyumen/uslugi/advokat_po_razboyam/">Адвокат по разбою</a></li>
+                        <li><a href="/tyumen/uslugi/advokat_po_moshennichestvu/">Адвокат по мошенничеству</a></li>
+                        <li><a href="/tyumen/uslugi/advokat_po_grabejam/">Адвокат по грабежу</a></li>
+                        <li><a href="/tyumen/uslugi/advokat_po_vyimogatelstvam/">Адвокат по вымогательству</a></li>
+                        <li><a href="/tyumen/uslugi/advokat_po_vzyatkam/">Адвокат по взятке</a></li>
+                        <li><a href="/tyumen/uslugi/ugolovnyiy_advokat_po_dtp/">Уголовный адвокат по ДТП</a></li>
+                        <li><a href="/tyumen/uslugi/advokat_po_ugonu_avtomobiley/">Адвокат по угону автомобиля</a></li>
+                        <li><a href="/tyumen/uslugi/advokat_po_st_213_uk_rf/">Адвокат по хулиганству</a></li>
+                        <li><a href="/tyumen/uslugi/advoka_po_samoupravstvu/">Адвокат по самоуправству</a></li>
+                        <li><a href="/tyumen/uslugi/nalogovyiy_advokat/">Налоговый адвокат</a></li>
+                        <li><a href="/tyumen/uslugi/tamojennyiy_advokat/">Таможенный адвокат</a></li>
+                        <li><a href="/tyumen/uslugi/advokat_doznanie/">Адвокат на следствии и дознании</a></li>
+                        <li><a href="/tyumen/uslugi/advokat_svidetelya/">Адвокат свидетеля</a></li>
+                        <li><a href="/tyumen/uslugi/advokat_predstavitel_v_ugolovnom_protsesse/">Адвокат-представитель в уголовном процессе</a></li>
+                        <li><a href="/tyumen/uslugi/ugolovnaya_apellyatsiya/">Уголовная апелляция</a></li>
+                        <li><a href="/tyumen/uslugi/ugolovnaya_kassatsiya/">Уголовная кассация</a></li>
+                        <li><a href="/tyumen/uslugi/peresmotr_ugolovnogo_dela/">Пересмотр уголовного дела</a></li>
+                        <li><a href="/tyumen/uslugi/advokat_po_udo/">Адвокат по УДО</a></li>
+                    </ul>
+                </li>
+                <li class="d-none" data-city="Магнитогорск">
+                    <a href="/magnitogorsk/uslugi/">Услуги</a>
+                    <ul>
+                        <li><a href="/magnitogorsk/uslugi/advokat_po_narkotikam/">Адвокат по наркотикам</a></li>
+                        <li><a href="/magnitogorsk/uslugi/advokat_po_ubiystvu/">Адвокат по убийству</a></li>
+                        <li><a href="/magnitogorsk/uslugi/advokat_po_ekonomicheskim_prestupleniyam/">Адвокат по экономическим преступлениям</a></li>
+                        <li><a href="/magnitogorsk/uslugi/prichinenie_vreda_zdorovyu/">Причинение вреда здоровью</a></li>
+                        <li><a href="/magnitogorsk/uslugi/advokat_dlya_biznesa/">Адвокат для бизнеса</a></li>
+                        <li><a href="/magnitogorsk/uslugi/advokat_po_doljnostnyim_prestupleniyam/">Адвокат по должностным преступлениям</a></li>
+                        <li><a href="/magnitogorsk/uslugi/advokat_po_kraje/">Адвокат по краже</a></li>
+                        <li><a href="/magnitogorsk/uslugi/advokat_po_160_state_uk_rf/">Адвокат по присвоению и растрате</a></li>
+                        <li><a href="/magnitogorsk/uslugi/advokat_po_razboyam/">Адвокат по разбою</a></li>
+                        <li><a href="/magnitogorsk/uslugi/advokat_po_moshennichestvu/">Адвокат по мошенничеству</a></li>
+                        <li><a href="/magnitogorsk/uslugi/advokat_po_grabejam/">Адвокат по грабежу</a></li>
+                        <li><a href="/magnitogorsk/uslugi/advokat_po_vyimogatelstvam/">Адвокат по вымогательству</a></li>
+                        <li><a href="/magnitogorsk/uslugi/advokat_po_vzyatkam/">Адвокат по взятке</a></li>
+                        <li><a href="/magnitogorsk/uslugi/ugolovnyiy_advokat_po_dtp/">Уголовный адвокат по ДТП</a></li>
+                        <li><a href="/magnitogorsk/uslugi/advokat_po_ugonu_avtomobiley/">Адвокат по угону автомобиля</a></li>
+                        <li><a href="/magnitogorsk/uslugi/advokat_po_st_213_uk_rf/">Адвокат по хулиганству</a></li>
+                        <li><a href="/magnitogorsk/uslugi/advoka_po_samoupravstvu/">Адвокат по самоуправству</a></li>
+                        <li><a href="/magnitogorsk/uslugi/nalogovyiy_advokat/">Налоговый адвокат</a></li>
+                        <li><a href="/magnitogorsk/uslugi/tamojennyiy_advokat/">Таможенный адвокат</a></li>
+                        <li><a href="/magnitogorsk/uslugi/advokat_doznanie/">Адвокат на следствии и дознании</a></li>
+                        <li><a href="/magnitogorsk/uslugi/advokat_svidetelya/">Адвокат свидетеля</a></li>
+                        <li><a href="/magnitogorsk/uslugi/advokat_predstavitel_v_ugolovnom_protsesse/">Адвокат-представитель в уголовном процессе</a></li>
+                        <li><a href="/magnitogorsk/uslugi/ugolovnaya_apellyatsiya/">Уголовная апелляция</a></li>
+                        <li><a href="/magnitogorsk/uslugi/ugolovnaya_kassatsiya/">Уголовная кассация</a></li>
+                        <li><a href="/magnitogorsk/uslugi/peresmotr_ugolovnogo_dela/">Пересмотр уголовного дела</a></li>
+                        <li><a href="/magnitogorsk/uslugi/advokat_po_udo/">Адвокат по УДО</a></li>
+                    </ul>
+                </li>
+                <li class="d-none" data-city="Сургут">
+                    <a href="/surgut/uslugi/">Услуги</a>
+                    <ul>
+                        <li><a href="/surgut/uslugi/advokat_po_narkotikam/">Адвокат по наркотикам</a></li>
+                        <li><a href="/surgut/uslugi/advokat_po_ubiystvu/">Адвокат по убийству</a></li>
+                        <li><a href="/surgut/uslugi/advokat_po_ekonomicheskim_prestupleniyam/">Адвокат по экономическим преступлениям</a></li>
+                        <li><a href="/surgut/uslugi/prichinenie_vreda_zdorovyu/">Причинение вреда здоровью</a></li>
+                        <li><a href="/surgut/uslugi/advokat_dlya_biznesa/">Адвокат для бизнеса</a></li>
+                        <li><a href="/surgut/uslugi/advokat_po_doljnostnyim_prestupleniyam/">Адвокат по должностным преступлениям</a></li>
+                        <li><a href="/surgut/uslugi/advokat_po_kraje/">Адвокат по краже</a></li>
+                        <li><a href="/surgut/uslugi/advokat_po_160_state_uk_rf/">Адвокат по присвоению и растрате</a></li>
+                        <li><a href="/surgut/uslugi/advokat_po_razboyam/">Адвокат по разбою</a></li>
+                        <li><a href="/surgut/uslugi/advokat_po_moshennichestvu/">Адвокат по мошенничеству</a></li>
+                        <li><a href="/surgut/uslugi/advokat_po_grabejam/">Адвокат по грабежу</a></li>
+                        <li><a href="/surgut/uslugi/advokat_po_vyimogatelstvam/">Адвокат по вымогательству</a></li>
+                        <li><a href="/surgut/uslugi/advokat_po_vzyatkam/">Адвокат по взятке</a></li>
+                        <li><a href="/surgut/uslugi/ugolovnyiy_advokat_po_dtp/">Уголовный адвокат по ДТП</a></li>
+                        <li><a href="/surgut/uslugi/advokat_po_ugonu_avtomobiley/">Адвокат по угону автомобиля</a></li>
+                        <li><a href="/surgut/uslugi/advokat_po_st_213_uk_rf/">Адвокат по хулиганству</a></li>
+                        <li><a href="/surgut/uslugi/advoka_po_samoupravstvu/">Адвокат по самоуправству</a></li>
+                        <li><a href="/surgut/uslugi/nalogovyiy_advokat/">Налоговый адвокат</a></li>
+                        <li><a href="/surgut/uslugi/tamojennyiy_advokat/">Таможенный адвокат</a></li>
+                        <li><a href="/surgut/uslugi/advokat_doznanie/">Адвокат на следствии и дознании</a></li>
+                        <li><a href="/surgut/uslugi/advokat_svidetelya/">Адвокат свидетеля</a></li>
+                        <li><a href="/surgut/uslugi/advokat_predstavitel_v_ugolovnom_protsesse/">Адвокат-представитель в уголовном процессе</a></li>
+                        <li><a href="/surgut/uslugi/ugolovnaya_apellyatsiya/">Уголовная апелляция</a></li>
+                        <li><a href="/surgut/uslugi/ugolovnaya_kassatsiya/">Уголовная кассация</a></li>
+                        <li><a href="/surgut/uslugi/peresmotr_ugolovnogo_dela/">Пересмотр уголовного дела</a></li>
+                        <li><a href="/surgut/uslugi/advokat_po_udo/">Адвокат по УДО</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="/poleznaya_informatsiya/">Полезная информация</a>
+                    <ul>
+                        <li><a href="/poleznaya_informatsiya/kak_vyibrat_advokata_po_ugolovnyim_delam/">Как выбрать адвоката по уголовным делам</a></li>
+                        <li><a href="/poleznaya_informatsiya/chto_delat_esli_zaderjala_politsiya/">Что делать если задержала полиция</a></li>
+                        <li><a href="/poleznaya_informatsiya/trebuetsya_advokat/">Требуется адвокат</a></li>
+                        <li><a href="/poleznaya_informatsiya/objalovanie_prigovora_po_ugolovnomu_delu/">Обжалование приговора по уголовному делу</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a href="">
-                        Полезная информация
-                    </a>
+                    <a href="/stoimost_uslug/">Стоимость услуг</a>
                 </li>
+                <li><a href="/inyie_voprosyi/">Иные вопросы</a></li>
                 <li>
-                    <a href="">
-                        Контакты
-                    </a>
+                    <a href="/kontaktyi/">Контакты</a>
                 </li>
             </ul>
         </nav>

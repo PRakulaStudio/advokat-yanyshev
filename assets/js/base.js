@@ -147,8 +147,53 @@ window.addEventListener("load", function () {
         animateScrollTo(0);
     });
     modal('.btn--open_form', '#form', function (div, lightboxer) {
+        inputNumber(div.querySelector('.modal__phone'));
+        div.querySelector('.btn_form').addEventListener('click', btn => {
+            let name = div.querySelector('.modal__name').value;
+            let phone = div.querySelector('.modal__phone').value;
+            let text = div.querySelector('.modal__text').value;
+
+            if (name === '' || phone === '' || text === '')
+                console.log(false)
+        })
+    });
+
+    let btnCity = document.querySelector('.contacts__cities button');
+    btnCity.addEventListener('click', e => {
+        e.target.classList.toggle('focus')
+    });
+
+    document.querySelector('.contacts__cities button').textContent = getCity();
+    document.querySelectorAll('[data-city="' + getCity() + '"]').forEach(li => {
+        li.classList.remove('d-none')
+    });
+
+    document.querySelectorAll('.contacts__cities li').forEach(li => {
+        li.addEventListener('click', function (e) {
+            btnCity.classList.toggle('focus');
+            setCity(e.target.innerText)
+        })
     })
 });
+
+function setCity(city) {
+    document.querySelectorAll('[data-city="' + getCity() + '"]').forEach(li => {
+        li.classList.add('d-none')
+    });
+    document.querySelectorAll('[data-city="' + city + '"]').forEach(li => {
+        li.classList.remove('d-none')
+    });
+    localStorage.setItem('city', city)
+    document.querySelector('.contacts__cities button').textContent = city
+
+}
+
+function getCity() {
+    if (localStorage.getItem('city') !== null)
+        return localStorage.getItem('city')
+    return 'Екатеринбург'
+}
+
 
 function showMenu() {
     let header = document.querySelector("header");

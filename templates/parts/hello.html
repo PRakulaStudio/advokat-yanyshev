@@ -4,9 +4,12 @@
             <h1 class="hello__title" data-container="page-title"></h1>
             <h3 class="hello__place">в Екатеринбурге и Свердловской области</h3>
             <p class="hello__consultation">Получите консультацию адвоката по телефону!</p>
-            <p class="contacts__phone contacts__phone--large">
-                <a href="tel:+7 (912) 631-20-28">+7 (912) 631-20-28</a>
-            </p>
+            <div class="phone-wrapper">
+                <p class="contacts__phone contacts__phone--large">
+                    <a href="tel:+7 (912) 631-20-28">+7 (912) 631-20-28</a>
+                </p>
+                <button class="btn--open_form btn_form">Заказать звонок</button>
+            </div>
             <div class="hello__tituls">
                 <ul>
                     <li>Член Президиума Свердловской областной Гильдии адвокатов</li>
@@ -19,6 +22,26 @@
             <div class="photo__description">
                 <p class="photo__description--name">Янышев Константин Валентинович</p>
                 <p class="photo__description--position">Адвокат Свердловской областной <br> гильдии адвокатов</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="form">
+    <div class="modal__wrapper">
+        <div class="modal__photo">
+
+        </div>
+        <div class="modal__info">
+            <h2>Заполните данную форму</h2>
+            <h3>Я свяжусь с Вами в ближайшее время</h3>
+            <div class="modal_contacts">
+                <input type="text" placeholder="Ваше имя">
+                <input type="text" placeholder="Ваш телефон">
+            </div>
+            <p><textarea name="" id="" cols="30" rows="5" placeholder="Напишите Ваш вопрос"></textarea></p>
+            <div>
+                <button class="btn_form">Заказать звонок</button>
             </div>
         </div>
     </div>
