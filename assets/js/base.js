@@ -1,5 +1,4 @@
 const body = document.querySelector("body");
-
 window.addEventListener("load", function () {
     function a(a, b) {
         let c = /^(?:file):/, d = new XMLHttpRequest, e = 0;
@@ -136,6 +135,19 @@ window.addEventListener("load", function () {
     document.querySelectorAll('[data-mce-bogus]').forEach(item => {
         item.remove();
     });
+
+    let scroll = document.createElement("div");
+    scroll.classList.add('scrollup');
+    body.appendChild(scroll);
+    window.onscroll = function () {
+        (window.pageYOffset > 200) ? scroll.classList.add('scrollup-o') : scroll.classList.remove('scrollup-o');
+    };
+
+    document.querySelector('div.scrollup').addEventListener('click', function (event) {
+        animateScrollTo(0);
+    });
+    modal('.btn--open_form', '#form', function (div, lightboxer) {
+    })
 });
 
 function showMenu() {

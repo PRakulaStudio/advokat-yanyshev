@@ -3,39 +3,36 @@
 @media screen and (max-width: 1399px)
   .container
     +content-width-normal
-  .services__list, .warning .container, .warning__lists, .practice, .situations .container
+  //.services__list,
+  .warning .container, .warning__lists, .practice, .situations .container
     max-width: 900px !important
 
+  .menu__list
+    li
+      margin: 0 0 0 2px
+
 @media screen and (max-width: 1199px)
+  main.without-breadcrumbs
+    .hello
+      padding-top: 150px
   .hello
+    padding-top: 200px
     background-image: url("/assets/images/fon-site-1200.jpg")
-  .container
+  //.container
     width: 960px
+  .about_me
+    padding-top: 20px
   .hello
     .photo
       right: 0
-      max-width: 40%
-      flex-basis: 40%
 
-  .services__list, .warning .container, .warning__lists, .practice, .situations .container
+  //.services__list,
+  .warning .container, .warning__lists, .practice, .situations .container
     max-width: 940px !important
   .warning
     .col
       padding: 0 5px
 
-  .menu__list
-    li
-      margin: 0 0 0 5px
-
-@media screen and (max-width: 991px)
-  main.without-breadcrumbs
-    .hello
-      padding-top: 150px
-  .hello
-    background-image: url("/assets/images/fon-site-1050.jpg")
-    padding-top: 200px
-  .container
-    width: 720px
   header
     .container
       position: relative
@@ -57,6 +54,21 @@
           margin: 0
           display: flex
           justify-content: center
+
+  .menu__list
+    li
+      margin: 0 0 0 10px
+
+@media screen and (max-width: 991px)
+  main.without-breadcrumbs
+    .hello
+      padding-top: 150px
+  .hello
+    background-image: url("/assets/images/fon-site-1050.jpg")
+    padding-top: 200px
+  //.container
+    width: 720px
+
   .hello
     &__title
       font-size: 2.5rem
@@ -79,12 +91,10 @@
         margin-left: -16px !important
         height: 2rem !important
         top: calc(50% - 1rem) !important
-  .services__list, .warning .container, .warning__lists, .practice, .situations .container
+  //.services__list,
+  .warning .container, .warning__lists, .practice, .situations .container
     max-width: 700px !important
-  .services__list
-    .col-2
-      flex-basis: 50%
-      max-width: 50%
+
   footer
     .contacts__phone--large
       a
@@ -100,11 +110,7 @@
       max-width: 50%
       object-fit: cover
       object-position: center
-  .about_me
-    padding-top: 20px
-  .menu__list
-    li
-      margin: 0 0 0 10px
+
 
 @Media screen and (min-width: 768px)
   .hello
@@ -118,12 +124,15 @@
   .hello
     background-image: url("/assets/images/fon-site-1050.jpg")
     padding-top: 140px
+    height: auto
+    min-height: auto
+    padding-bottom: 10px
   .about_me
     margin-top: 0
     padding-top: 0
   .hello
     background-image: url("/assets/images/fon-site-800.jpg")
-  .container
+  //.container
     width: 540px
   .hello
     text-align: center
@@ -146,16 +155,14 @@
         margin-left: -16px !important
         height: 2.5rem !important
         top: calc(50% - 1.25rem) !important
-  .services__list
-    .col-2
-      flex-basis: 100%
-      max-width: 100%
+
   .about__tituls
     div
       display: flex
       img
         margin: auto
-  .services__list, .warning .container, .warning__lists, .practice, .situations .container
+  //.services__list,
+  .warning .container, .warning__lists, .practice, .situations .container
     max-width: 510px !important
   .logo
     img
@@ -187,9 +194,6 @@
     .cities
       display: none
 
-  .situations
-    .col
-      margin: 10px !important
   header
     .container
       flex-direction: row
@@ -211,12 +215,13 @@
   .largetext__text
     img
       max-width: 100%
+      width: 100%
+      margin: 0 !important
+      float: none !important
 
 @media screen and (max-width: 575px)
   .hello
     background-image: url("/assets/images/fon-site-600.jpg")
-    height: auto
-    padding-bottom: 10px
     //margin-top: 40px
     &__title
       font-size: 1.8rem
@@ -246,11 +251,6 @@
         height: 1.5rem !important
         top: calc(50% - 0.75rem) !important
 
-  .services__list
-    .col-2
-      flex-basis: 100%
-      max-width: 100%
-
   .about
     &__tituls
       flex-direction: column
@@ -267,10 +267,11 @@
         background: #ddd
     .text-center
       text-align: left
-  .services__text
-    max-height: 15rem
-  .services__list, .warning .container, .warning__lists, .practice, .situations .container
+  //.services__list,
+  .practice, .situations .container
     max-width: 290px !important
+  .warning__lists .col:first-child
+    display: block
 
   .lightboxer-container
     > span, > .close
@@ -283,23 +284,23 @@
         font-size: 9vw
 
 @media screen and (max-height: 480px)
-  //header
-    .breadCrumbs
-      height: 32px
-      a
+//header
+  .breadCrumbs
+    height: 32px
+    a
+      font-size: 0.8rem
+      padding-top: 5px !important
+      padding-bottom: 5px !important
+
+    li
+      &:after
+        height: 0.8rem !important
+      &.active
         font-size: 0.8rem
         padding-top: 5px !important
-        padding-bottom: 5px !important
 
-      li
-        &:after
-          height: 0.8rem !important
-        &.active
-          font-size: 0.8rem
-          padding-top: 5px !important
-
-  //.hello
-    margin-top: 0
+//.hello
+  margin-top: 0
 
 @media screen and (max-width: 768px) and (max-height: 1024px)
   header
@@ -308,11 +309,9 @@
         text-align: right !important
 
 @media screen and (max-width: 812px) and (max-height: 414px)
-  header
-    .contacts
-      top: 0 !important
   .hello
     height: auto
+    min-height: auto
     padding-bottom: 20px
     text-align: center
 
@@ -340,3 +339,13 @@
     .photo
       background: url("/assets/images/photo.png") no-repeat bottom right
       background-size: contain
+
+@media screen and (orientation: portrait) and (min-width: 768px)
+  .hello
+    //max-height: 70vh
+    min-height: auto
+
+@media screen and (max-aspect-ratio: 4/3)
+  .hello
+    min-height: auto
+    height: auto

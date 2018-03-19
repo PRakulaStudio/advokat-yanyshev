@@ -31,14 +31,43 @@
   top: calc(50% - .5rem);
 }
 
-.col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col, .col-auto {
-  position: relative;
-  width: 100%;
-  min-height: 1px;
+.modal {
+  display: none;
 }
 
-.col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-auto {
-  -webkit-box-flex: 0;
+.modal-form {
+  background: #fff;
+  margin: auto;
+  padding: 10px;
+  width: 30vw;
+  min-width: 300px;
+  line-height: 1.75;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+}
+
+.modal-form .btn-modal-form-close {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  right: 0;
+  top: 0;
+  background: #fabb00 url("/assets/icons/icons8-delete-100.png") no-repeat center;
+  background-size: cover;
+  cursor: pointer;
+  z-index: 3;
+}
+
+.modal-form .wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.modal-form .wrapper * {
+  width: 100%;
 }
 
 .container, .container-fluid {
@@ -48,8 +77,7 @@
   margin-right: auto;
   margin-left: auto;
 }
-
-.row {
+.container .row, .container-fluid .row {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -57,60 +85,8 @@
   flex-wrap: wrap;
 }
 
-.col-1 {
-  -ms-flex: 0 0 16.6666666667%;
-  flex: 0 0 16.6666666667%;
-  max-width: 16.6666666667%;
-}
-
-.col-2 {
-  -ms-flex: 0 0 33.3333333333%;
-  flex: 0 0 33.3333333333%;
-  max-width: 33.3333333333%;
-}
-
-.col-3 {
-  -ms-flex: 0 0 50%;
-  flex: 0 0 50%;
-  max-width: 50%;
-}
-
-.col-4 {
-  -ms-flex: 0 0 66.6666666667%;
-  flex: 0 0 66.6666666667%;
-  max-width: 66.6666666667%;
-}
-
-.col-5 {
-  -ms-flex: 0 0 83.3333333333%;
-  flex: 0 0 83.3333333333%;
-  max-width: 83.3333333333%;
-}
-
-.col-6 {
-  -ms-flex: 0 0 100%;
-  flex: 0 0 100%;
-  max-width: 100%;
-}
-
-.col {
-  -ms-flex-preferred-size: 0;
-  flex-basis: 0;
-  -webkit-box-flex: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
-  max-width: 100%;
-}
-
-.col-auto {
-  width: auto;
-  -ms-flex: 0 0 auto;
-  flex: 0 0 auto;
-  max-width: none;
-}
-
 html, body {
-  min-height: 100%;
+  min-height: 100vh;
 }
 
 *, *:before, *:after {
@@ -266,7 +242,7 @@ header, footer, section {
   padding-left: 0;
   background: #fff;
   max-height: 300px;
-  overflow-y: scroll;
+  overflow-y: auto;
   z-index: 20;
 }
 .menu__list > li ul li {
@@ -409,17 +385,29 @@ main.without-breadcrumbs .hello {
 }
 
 .hello {
-  height: 100vh;
+  min-height: 100vh;
   overflow: hidden;
   background: url("/assets/images/fon-site.jpg") no-repeat center;
   background-size: cover;
   position: relative;
   margin-top: -150px;
   padding-top: 150px;
+  display: flex;
 }
 .hello .container, .hello .row {
   height: 100%;
   position: relative;
+}
+.hello .container {
+  display: flex;
+  flex-grow: 1;
+  height: auto;
+}
+.hello .row {
+  width: 90%;
+  margin: auto;
+  flex-grow: 1;
+  justify-content: center;
 }
 .hello .col-4 {
   display: flex;
@@ -427,20 +415,19 @@ main.without-breadcrumbs .hello {
   z-index: 3;
   flex-basis: 50%;
   max-width: 50%;
+  padding: 20px 0;
 }
 .hello .photo {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  position: absolute;
-  bottom: 0;
-  right: 0;
   overflow: hidden;
   width: 90%;
   height: 90%;
   z-index: 2;
   flex-basis: 50%;
   max-width: 50%;
+  margin: auto auto 0;
 }
 .hello .photo__img {
   margin-bottom: -10px;
@@ -448,12 +435,10 @@ main.without-breadcrumbs .hello {
   object-position: bottom right;
 }
 .hello .photo__description {
-  position: absolute;
-  bottom: 50px;
   color: #fff;
-  right: 0;
   text-shadow: 1px 1px 2px black;
   max-width: 300px;
+  margin: auto 10px 50px auto;
 }
 .hello .photo__description--name {
   font-weight: 800;
@@ -504,7 +489,7 @@ main.without-breadcrumbs .hello {
 
 .services {
   background: url("/assets/icons/libra.svg") no-repeat right top;
-  background-size: 50%;
+  background-size: 500px;
 }
 .services__list {
   display: flex;
@@ -515,6 +500,17 @@ main.without-breadcrumbs .hello {
 .services__list .col-2 {
   padding: 0 7px;
   margin-bottom: 14px;
+  width: calc(33.3333333333% - 10px);
+}
+@media screen and (max-width: 992px) {
+  .services__list .col-2 {
+    width: calc(50% - 10px);
+  }
+}
+@media screen and (max-width: 768px) {
+  .services__list .col-2 {
+    width: calc(100% - 10px);
+  }
 }
 .services__item {
   box-shadow: 5px 5px 20px rgba(100, 100, 100, 0.3);
@@ -573,12 +569,6 @@ main.without-breadcrumbs .hello {
 }
 .services__text {
   flex-grow: 1;
-  max-height: 16rem;
-  overflow: hidden;
-}
-.services__text p {
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 .services__btn {
   text-align: center;
@@ -743,12 +733,6 @@ footer .prakula__link amp-img img {
   margin: 0 5px;
   background-color: #F2F2F2;
 }
-.situations li:last-child {
-  margin-right: 0;
-}
-.situations li:first-child {
-  margin-left: 0;
-}
 .situations li:before {
   border: 20px solid #9d221f;
   border-right-color: transparent;
@@ -759,6 +743,22 @@ footer .prakula__link amp-img img {
   left: 0;
   background: none;
   border-radius: 0;
+}
+.situations li.col {
+  margin-bottom: 10px !important;
+  flex-grow: 1;
+  max-width: 100%;
+  width: calc(25% - 10px);
+}
+@media screen and (max-width: 1200px) {
+  .situations li.col {
+    width: calc(50% - 10px);
+  }
+}
+@media screen and (max-width: 576px) {
+  .situations li.col {
+    width: calc(100% - 10px);
+  }
 }
 .situations__index {
   position: absolute;
@@ -910,6 +910,7 @@ footer .prakula__link amp-img img {
 }
 .about_me .awards .row {
   padding: 15px 0;
+  justify-content: space-between;
 }
 .about_me .awards .row .col {
   cursor: pointer;
@@ -930,6 +931,62 @@ footer .prakula__link amp-img img {
   margin-bottom: 10px;
 }
 
+/* up */
+.scrollup {
+  position: fixed;
+  z-index: 50;
+  bottom: 10px;
+  right: 10px;
+  width: 50px;
+  height: 50px;
+  cursor: auto;
+  text-indent: -9999px;
+  background: url("/assets/icons/arrow-accent.svg") no-repeat center;
+  background-size: 35px;
+  transform: rotate(-90deg);
+  opacity: 0;
+  transition: all 1s;
+  border: 2px solid #9d221f;
+  border-radius: 40px;
+}
+
+.scrollup-o {
+  cursor: pointer;
+  opacity: 1;
+}
+
+/* up end */
+.modal-form h3 {
+  margin-bottom: 0;
+  text-align: center;
+  text-transform: uppercase;
+}
+.modal-form input, .modal-form textarea {
+  width: 100%;
+  border: 1px solid #9d221f;
+  padding: 10px;
+  border-radius: 10px;
+}
+.modal-form p {
+  margin: 5px 0;
+}
+.modal-form input[type='text']:focus, .modal-form textarea:focus {
+  box-shadow: 0 0 3pt 2pt #ffcccc;
+  outline: none;
+}
+.modal-form button {
+  width: 100%;
+  padding: 10px 0;
+  background: none;
+  border: 1px solid #9d221f;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.modal-form button:focus {
+  outline: none;
+  background: #eee;
+}
+
 .contacts__phone a:before, .contacts__email a:before {
   content: "";
   background-size: contain;
@@ -940,16 +997,6 @@ footer .prakula__link amp-img img {
   position: absolute;
   left: -1rem;
   top: calc(50% - .5rem);
-}
-
-.col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col, .col-auto {
-  position: relative;
-  width: 100%;
-  min-height: 1px;
-}
-
-.col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-auto {
-  -webkit-box-flex: 0;
 }
 
 .o-none {
@@ -977,65 +1024,44 @@ footer .prakula__link amp-img img {
   top: calc(50% - .5rem);
 }
 
-.col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col, .col-auto {
-  position: relative;
-  width: 100%;
-  min-height: 1px;
-}
-
-.col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-auto {
-  -webkit-box-flex: 0;
-}
-
 @media screen and (max-width: 1399px) {
   .container {
     max-width: 1024px;
     margin: 0 auto;
   }
 
-  .services__list, .warning .container, .warning__lists, .practice, blockquote, .situations .container {
+  .warning .container, .warning__lists, .practice, blockquote, .situations .container {
     max-width: 900px !important;
-  }
-}
-@media screen and (max-width: 1199px) {
-  .hello {
-    background-image: url("/assets/images/fon-site-1200.jpg");
-  }
-
-  .container {
-    width: 960px;
-  }
-
-  .hello .photo {
-    right: 0;
-    max-width: 40%;
-    flex-basis: 40%;
-  }
-
-  .services__list, .warning .container, .warning__lists, .practice, blockquote, .situations .container {
-    max-width: 940px !important;
-  }
-
-  .warning .col {
-    padding: 0 5px;
   }
 
   .menu__list li {
-    margin: 0 0 0 5px;
+    margin: 0 0 0 2px;
   }
 }
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 1199px) {
   main.without-breadcrumbs .hello {
     padding-top: 150px;
   }
 
   .hello {
-    background-image: url("/assets/images/fon-site-1050.jpg");
     padding-top: 200px;
+    background-image: url("/assets/images/fon-site-1200.jpg");
   }
 
-  .container {
-    width: 720px;
+  .about_me {
+    padding-top: 20px;
+  }
+
+  .hello .photo {
+    right: 0;
+  }
+
+  .warning .container, .warning__lists, .practice, blockquote, .situations .container {
+    max-width: 940px !important;
+  }
+
+  .warning .col {
+    padding: 0 5px;
   }
 
   header .container {
@@ -1059,6 +1085,20 @@ footer .prakula__link amp-img img {
     margin: 0;
     display: flex;
     justify-content: center;
+  }
+
+  .menu__list li {
+    margin: 0 0 0 10px;
+  }
+}
+@media screen and (max-width: 991px) {
+  main.without-breadcrumbs .hello {
+    padding-top: 150px;
+  }
+
+  .hello {
+    background-image: url("/assets/images/fon-site-1050.jpg");
+    padding-top: 200px;
   }
 
   .hello__title {
@@ -1091,13 +1131,8 @@ footer .prakula__link amp-img img {
     top: calc(50% - 1rem) !important;
   }
 
-  .services__list, .warning .container, .warning__lists, .practice, blockquote, .situations .container {
+  .warning .container, .warning__lists, .practice, blockquote, .situations .container {
     max-width: 700px !important;
-  }
-
-  .services__list .col-2 {
-    flex-basis: 50%;
-    max-width: 50%;
   }
 
   footer .contacts__phone--large a {
@@ -1115,14 +1150,6 @@ footer .prakula__link amp-img img {
     object-fit: cover;
     object-position: center;
   }
-
-  .about_me {
-    padding-top: 20px;
-  }
-
-  .menu__list li {
-    margin: 0 0 0 10px;
-  }
 }
 @Media screen and (min-width: 768px) {
   .hello .col-4 {
@@ -1137,6 +1164,9 @@ footer .prakula__link amp-img img {
   .hello {
     background-image: url("/assets/images/fon-site-1050.jpg");
     padding-top: 140px;
+    height: auto;
+    min-height: auto;
+    padding-bottom: 10px;
   }
 
   .about_me {
@@ -1146,10 +1176,6 @@ footer .prakula__link amp-img img {
 
   .hello {
     background-image: url("/assets/images/fon-site-800.jpg");
-  }
-
-  .container {
-    width: 540px;
   }
 
   .hello {
@@ -1182,11 +1208,6 @@ footer .prakula__link amp-img img {
     top: calc(50% - 1.25rem) !important;
   }
 
-  .services__list .col-2 {
-    flex-basis: 100%;
-    max-width: 100%;
-  }
-
   .about__tituls div {
     display: flex;
   }
@@ -1194,7 +1215,7 @@ footer .prakula__link amp-img img {
     margin: auto;
   }
 
-  .services__list, .warning .container, .warning__lists, .practice, blockquote, .situations .container {
+  .warning .container, .warning__lists, .practice, blockquote, .situations .container {
     max-width: 510px !important;
   }
 
@@ -1231,10 +1252,6 @@ footer .prakula__link amp-img img {
     display: none;
   }
 
-  .situations .col {
-    margin: 10px !important;
-  }
-
   header .container {
     flex-direction: row;
   }
@@ -1258,13 +1275,14 @@ footer .prakula__link amp-img img {
 
   .largetext__text img {
     max-width: 100%;
+    width: 100%;
+    margin: 0 !important;
+    float: none !important;
   }
 }
 @media screen and (max-width: 575px) {
   .hello {
     background-image: url("/assets/images/fon-site-600.jpg");
-    height: auto;
-    padding-bottom: 10px;
   }
   .hello__title {
     font-size: 1.8rem;
@@ -1303,11 +1321,6 @@ footer .prakula__link amp-img img {
     top: calc(50% - 0.75rem) !important;
   }
 
-  .services__list .col-2 {
-    flex-basis: 100%;
-    max-width: 100%;
-  }
-
   .about__tituls {
     flex-direction: column;
   }
@@ -1329,12 +1342,12 @@ footer .prakula__link amp-img img {
     text-align: left;
   }
 
-  .services__text {
-    max-height: 15rem;
+  .practice, blockquote, .situations .container {
+    max-width: 290px !important;
   }
 
-  .services__list, .warning .container, .warning__lists, .practice, blockquote, .situations .container {
-    max-width: 290px !important;
+  .warning__lists .col:first-child {
+    display: block;
   }
 
   .lightboxer-container > span, .lightboxer-container > .close {
@@ -1354,12 +1367,9 @@ footer .prakula__link amp-img img {
   }
 }
 @media screen and (max-width: 812px) and (max-height: 414px) {
-  header .contacts {
-    top: 0 !important;
-  }
-
   .hello {
     height: auto;
+    min-height: auto;
     padding-bottom: 20px;
     text-align: center;
   }
@@ -1392,5 +1402,16 @@ footer .prakula__link amp-img img {
   .hello .photo {
     background: url("/assets/images/photo.png") no-repeat bottom right;
     background-size: contain;
+  }
+}
+@media screen and (orientation: portrait) and (min-width: 768px) {
+  .hello {
+    min-height: auto;
+  }
+}
+@media screen and (max-aspect-ratio: 4 / 3) {
+  .hello {
+    min-height: auto;
+    height: auto;
   }
 }
