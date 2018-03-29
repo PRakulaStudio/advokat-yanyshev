@@ -72,6 +72,10 @@
   width: 100%;
 }
 
+.modal-alert {
+  text-align: center;
+}
+
 .container, .container-fluid {
   width: 100%;
   padding-right: 15px;
@@ -216,6 +220,7 @@ header, footer, section {
   display: flex;
   margin-bottom: 0;
   margin-top: 10px;
+  padding: 0;
 }
 .menu__list li {
   margin: 0 10px;
@@ -357,7 +362,8 @@ header .rightBlock {
 }
 .contacts__phone a, .contacts__email a {
   position: relative;
-  padding: 10px;
+  padding: 0 10px;
+  display: block;
 }
 .contacts__phone a:hover {
   text-decoration: none;
@@ -385,7 +391,19 @@ header .rightBlock {
   background-image: url("/assets/icons/message.svg");
 }
 .contacts__fb {
-  margin: auto 0;
+  margin: auto 10px auto 0;
+}
+@media screen and (max-width: 1199px) {
+  .contacts__fb {
+    position: absolute;
+    right: 0;
+    bottom: -3px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .contacts__fb {
+    position: relative;
+  }
 }
 .contacts__fb img {
   height: 20px;
@@ -394,9 +412,18 @@ header .rightBlock {
   position: relative;
   margin-right: 30px;
   width: 160px;
-  display: none;
+  display: block;
+}
+@media screen and (max-width: 767px) {
+  .contacts__cities {
+    margin: auto;
+  }
+  .contacts__cities button {
+    margin: auto !important;
+  }
 }
 .contacts__cities button {
+  cursor: pointer;
   background: none;
   border: none;
   text-decoration: underline;
@@ -446,6 +473,7 @@ header .rightBlock {
 }
 .contacts__cities ul li a, .contacts__cities ul li a:hover {
   text-decoration: none;
+  display: block;
 }
 .contacts__cities ul li:hover {
   position: relative;
@@ -477,6 +505,10 @@ main.without-breadcrumbs .hello {
   margin: auto 0 auto auto;
   position: relative;
   cursor: pointer;
+  font-size: 1.25rem;
+}
+.btn_form:focus {
+  outline: none;
 }
 .btn_form:after {
   content: "";
@@ -488,7 +520,7 @@ main.without-breadcrumbs .hello {
   left: 0;
   position: absolute;
   background-size: 80px;
-  animation: blick 4s infinite ease-in;
+  animation: blick 6s infinite ease-in;
 }
 .btn_form:hover {
   background: linear-gradient(0, #721917, #be3430);
@@ -615,12 +647,12 @@ main.without-breadcrumbs .hello {
   margin-bottom: 14px;
   width: calc(33.3333333333% - 10px);
 }
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 991px) {
   .services__list .col-2 {
     width: calc(50% - 10px);
   }
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
   .services__list .col-2 {
     width: calc(100% - 10px);
   }
@@ -863,12 +895,12 @@ footer .prakula__link amp-img img {
   max-width: 100%;
   width: calc(25% - 10px);
 }
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1199px) {
   .situations li.col {
     width: calc(50% - 10px);
   }
 }
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 575px) {
   .situations li.col {
     width: calc(100% - 10px);
   }
@@ -1070,8 +1102,9 @@ footer .prakula__link amp-img img {
 
 /* up end */
 .modal-form {
-  width: 50vw;
+  width: 740px;
   padding-right: 15px;
+  max-width: 90vw;
 }
 .modal-form .modal__wrapper {
   display: flex;
@@ -1091,10 +1124,26 @@ footer .prakula__link amp-img img {
   background-size: contain;
   margin-top: 20px;
 }
+@media screen and (max-width: 767px) {
+  .modal-form .modal__photo {
+    display: none;
+  }
+}
 .modal-form .modal__info {
-  padding: 0 10px 0 0;
   box-shadow: 5px 5px 10px #a0a0a0;
   margin-bottom: 15px;
+  padding: 0 10px 15px 0;
+}
+@media screen and (max-width: 767px) {
+  .modal-form .modal__info {
+    width: calc(100% - 10px);
+  }
+}
+@media screen and (max-width: 767px) {
+  .modal-form .modal__info {
+    box-shadow: none;
+    padding: 0;
+  }
 }
 .modal-form .btn_form {
   margin: auto;
@@ -1108,9 +1157,22 @@ footer .prakula__link amp-img img {
   width: 100%;
   border: 1px solid #9d221f;
   padding: 10px;
+  font-size: 1rem;
+}
+.modal-form textarea {
+  resize: none;
+  font-family: "AdvokatRobota", Arial, sans-serif;
 }
 .modal-form .modal_contacts {
   display: flex;
+}
+@media screen and (max-width: 575px) {
+  .modal-form .modal_contacts {
+    flex-direction: column;
+  }
+  .modal-form .modal_contacts input:first-child {
+    margin-bottom: 1rem;
+  }
 }
 .modal-form .modal_contacts input:first-child {
   margin-right: 10px;
@@ -1164,7 +1226,7 @@ footer .prakula__link amp-img img {
   }
 
   .menu__list li {
-    margin: 0 0 0 2px;
+    margin: 0 0 0 7px;
   }
 }
 @media screen and (max-width: 1199px) {

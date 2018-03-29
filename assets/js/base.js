@@ -1,31 +1,42 @@
 const body = document.querySelector("body");
 window.addEventListener("load", function () {
-    function a(a, b) {
-        let c = /^(?:file):/, d = new XMLHttpRequest, e = 0;
-        d.onreadystatechange = function () {
-            4 === d.readyState && (e = d.status), c.test(location.href) && d.responseText && (e = 200), 4 === d.readyState && 200 === e && (a.innerHTML = d.responseText + a.innerHTML)
-        };
-        try {
-            d.open("GET", b, false);
-            d.send();
-        } catch (f) {
-        }
-    }
-
-
-    if (location.hostname !== "new.advokat-yanyshev.ru" && location.hostname !== "advokat-yanyshev.ru")
-        document.querySelectorAll("[data-template]").forEach(i => {
-            a(i, "parts/" + i.attributes.getNamedItem("data-template").value + ".html");
-            i.attributes.removeNamedItem("data-template");
-        });
+    setCityBtn(document);
 
     let path = location.pathname.split('/')[1];
     if (path === "") path = "/";
     else path = "/" + path + "/";
+
+    if (!(path.indexOf('/about/') + 1) && !(path.indexOf('/stoimost_uslug/') + 1) && !(path.indexOf('/kontaktyi/') + 1) && !(path.indexOf('/inyie_voprosyi/') + 1)) {
+        document.querySelectorAll('.contacts__cities ul a').forEach(a => {
+            if (a.attributes.getNamedItem('href').value === path) {
+                setCity(a.textContent);
+                document.querySelector('.logo__link').href = path;
+            }
+        });
+    }
+    //console.log(getCity()) //Челябинск
+    /* document.querySelectorAll('.contacts__cities ul a').forEach(a => {
+         if (a.textContent == getCity()) {
+             //a.href
+             //console.log(path);
+             console.log(a.attributes.getNamedItem('href').value);
+             //console.log(path)
+             if (path.indexOf('/about/') + 1 || path.indexOf('/stoimost_uslug/') + 1 || path.indexOf('/kontaktyi/') + 1 || path.indexOf('/inyie_voprosyi/') + 1) {
+             }
+             else {
+                 if (!(path.indexOf(a.attributes.getNamedItem('href').value) + 1))
+                     if (path === "/")
+                         location.href = a.href
+             }
+
+             /!*if (path != a.attributes.getNamedItem('href').value)
+                 location.href = a.href;*!/
+         }
+     });*/
+
     let menuItem = document.querySelector("header nav a[href='" + path + "']");
     if (menuItem != null)
         menuItem.parentNode.classList.add('active');
-
 
     let serviceSituations = document.querySelector(".service-situations ul");
     if (serviceSituations != null) {
@@ -147,34 +158,61 @@ window.addEventListener("load", function () {
         animateScrollTo(0);
     });
     modal('.btn--open_form', '#form', function (div, lightboxer) {
-        inputNumber(div.querySelector('.modal__phone'));
+        //inputNumber(div.querySelector('.modal__phone'));
+        div.querySelector('.modal__phone').maskItWith('+7 (NNN) NNN-NN-NN');
+
         div.querySelector('.btn_form').addEventListener('click', btn => {
             let name = div.querySelector('.modal__name').value;
             let phone = div.querySelector('.modal__phone').value;
             let text = div.querySelector('.modal__text').value;
 
-            if (name === '' || phone === '' || text === '')
-                console.log(false)
+            if (name === '' || !div.querySelector('.modal__phone').masked() || text === '') {
+                modalAlert("Ошибка заполнения", "Не все поля заполнены!");
+                return false;
+            }
+            if (/[A-Z]/gi.test(name) || /[A-Z]/gi.test(text)) {
+                modalAlert("Ошибка заполнения", "Разрешено вводить только кириллицу!");
+                return false;
+            }
+            let data = new FormData();
+            data.append('name', name);
+            data.append('phone', phone);
+            data.append('message', text);
+            ajax(data, "/system/plugins/secargonia/yii2feedback/message/create", function (response) {
+                modalAlert("Ваша заявка принята", "Я отвечу Вам в ближайшее время");
+                lightboxer.closeBox();
+            })
         })
     });
 
-    let btnCity = document.querySelector('.contacts__cities button');
+    document.querySelectorAll('.menu__list>li ul').forEach(ul => {
+        new SimpleBar(ul, {autoHide: false});
+    })
+
+});
+
+function setCityBtn(container) {
+    let btnCity = container.querySelector('.contacts__cities button');
+    container.querySelector('.contacts__cities button').textContent = getCity();
+    btnCity.classList.remove('d-none');
     btnCity.addEventListener('click', e => {
         e.target.classList.toggle('focus')
     });
 
-    document.querySelector('.contacts__cities button').textContent = getCity();
-    document.querySelectorAll('[data-city="' + getCity() + '"]').forEach(li => {
+    container.querySelectorAll('[data-city]').forEach(li => {
+        li.classList.add('d-none')
+    });
+    container.querySelectorAll('[data-city="' + getCity() + '"]').forEach(li => {
         li.classList.remove('d-none')
     });
 
-    document.querySelectorAll('.contacts__cities li').forEach(li => {
+    container.querySelectorAll('.contacts__cities li').forEach(li => {
         li.addEventListener('click', function (e) {
             btnCity.classList.toggle('focus');
             setCity(e.target.innerText)
         })
     })
-});
+}
 
 function setCity(city) {
     document.querySelectorAll('[data-city="' + getCity() + '"]').forEach(li => {
@@ -235,6 +273,7 @@ function showMenu() {
             });
         }
     });
+    //setCityBtn(lightboxer.div);
     lightboxer.show();
 }
 
@@ -360,7 +399,7 @@ function ajax(data, link, success) {
             return responseData;
         })
         .catch(function (e) {
-            modalAlert("Произошла ошибка", "Позвоните нам, и мы ответим на любой Ваш вопрос");
+            modalAlert("Произошла ошибка", "Позвоните мне, и я отвечу на любой Ваш вопрос");
             console.log(e);
         })
         .then(function (response) {

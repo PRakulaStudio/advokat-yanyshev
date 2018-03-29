@@ -9,7 +9,7 @@
 
   .menu__list
     li
-      margin: 0 0 0 2px
+      margin: 0 0 0 7px
 
 @media screen and (max-width: 1199px)
   main.without-breadcrumbs
@@ -54,10 +54,6 @@
           margin: 0
           display: flex
           justify-content: center
-
-  .menu__list
-    li
-      margin: 0 0 0 10px
 
 @media screen and (max-width: 991px)
   main.without-breadcrumbs
@@ -113,7 +109,6 @@
       max-width: 50%
       object-fit: cover
       object-position: center
-
 
 @Media screen and (min-width: 768px)
   .hello
@@ -223,6 +218,9 @@
       float: none !important
 
 @media screen and (max-width: 575px)
+  header
+    > .container
+      padding-bottom: 20px
   .hello
     background-image: url("/assets/images/fon-site-600.jpg")
     //margin-top: 40px
@@ -238,8 +236,10 @@
       .btn--open_form
         margin: 0 auto 15px
 
+  main
+    padding-top: 170px
   main.without-breadcrumbs
-    padding-top: 85px
+    padding-top: 105px
   .container
     width: auto
   ul
@@ -309,7 +309,7 @@
 //.hello
   margin-top: 0
 
-@media screen and (max-width: 768px) and (max-height: 1024px)
+@media screen and (max-width: 767px) and (max-height: 1024px)
   header
     .contacts
       &__email, &__phone
@@ -341,13 +341,13 @@
     .contacts__phone
       margin-top: 0
 
-@media screen and (min-width: 768px)
+@media screen and (min-width: 767px)
   .hello
     .photo
       background: url("/assets/images/photo.png") no-repeat bottom right
       background-size: contain
 
-@media screen and (orientation: portrait) and (min-width: 768px)
+@media screen and (orientation: portrait) and (min-width: 767px)
   .hello
     //max-height: 70vh
     min-height: auto
